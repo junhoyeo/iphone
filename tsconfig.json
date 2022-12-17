@@ -14,7 +14,6 @@
     "target": "es5",
     "outDir": "dist",
     "rootDir": ".",
-    "baseUrl": "src",
     "declaration": true
   },
   "include": ["**/*.ts", "**/*.tsx"]
