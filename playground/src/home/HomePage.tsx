@@ -1,5 +1,9 @@
-import { Phone, type DeviceFrameColor } from '@junhoyeo/iphone';
-import React, { useState } from 'react';
+import {
+  Phone,
+  type DeviceFrameColor,
+  type DynamicIslandSize,
+} from '@junhoyeo/iphone';
+import React, { useMemo, useState } from 'react';
 import styled from 'styled-components';
 
 const BACKGROUND_IMAGE_URL =
@@ -13,6 +17,23 @@ const FRAME_COLORS: { color: DeviceFrameColor; src: string }[] = [
 
 const HomePage = () => {
   const [frameColor, setFrameColor] = useState<DeviceFrameColor>('purple');
+  // const [callState, setCallState] = useState<DynamicIslandSize>('default');
+  const [musicPlayerState, setMusicPlayerState] =
+    useState<DynamicIslandSize>('compact');
+
+  const props = useMemo(
+    () => ({
+      default: 'compact',
+      state: musicPlayerState,
+      setState: setMusicPlayerState,
+      onClick:
+        musicPlayerState === 'compact'
+          ? () => setMusicPlayerState('ultra')
+          : () => setMusicPlayerState('compact'),
+    }),
+    [musicPlayerState],
+  );
+
   return (
     <Container>
       <FrameColorList>
@@ -36,6 +57,7 @@ const HomePage = () => {
         transformScale={1}
         apps={[]}
         backgroundImage={BACKGROUND_IMAGE_URL}
+        dynamicIslandProps={props}
       />
     </Container>
   );

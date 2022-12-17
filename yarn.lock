@@ -334,6 +334,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@blazity/next-image-proxy@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "@blazity/next-image-proxy@npm:1.0.2"
+  dependencies:
+    isomorphic-unfetch: ^3.1.0
+    lodash.merge: ^4.6.2
+    user-agents: ^1.0.934
+  peerDependencies:
+    next: ">=9.0.0"
+    react: ">=16.0.0"
+    react-dom: ">=16.0.0"
+  checksum: 754b145f69994894379b6040aa6c4dfdd6770157876dd64358601ce18da0ce367010a7c2c9deec2c6650307eae461f17a3c19e5f81e6d4ea83504afbc2c25f55
+  languageName: node
+  linkType: hard
+
 "@emotion/is-prop-valid@npm:^0.8.2":
   version: 0.8.8
   resolution: "@emotion/is-prop-valid@npm:0.8.8"
@@ -661,6 +676,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@junhoyeo/iphone-playground@workspace:playground"
   dependencies:
+    "@blazity/next-image-proxy": ^1.0.2
     "@junhoyeo/iphone": "workspace:*"
     "@next/bundle-analyzer": ^13.0.6
     "@types/node": ^18.11.11
@@ -1993,6 +2009,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"detect-indent@npm:~6.0.0":
+  version: 6.0.0
+  resolution: "detect-indent@npm:6.0.0"
+  checksum: 0c38f362016e2d07af1c65b1ecd6ad8a91f06bfdd11383887c867a495ad286d04be2ab44027ac42444704d523982013115bd748c1541df7c9396ad76b22aaf5d
+  languageName: node
+  linkType: hard
+
 "detective@npm:^5.2.1":
   version: 5.2.1
   resolution: "detective@npm:5.2.1"
@@ -2029,6 +2052,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"docopt@npm:~0.6.2":
+  version: 0.6.2
+  resolution: "docopt@npm:0.6.2"
+  checksum: b6640c723c680ff623a06826bdd3c85dd6cc33f589e3d031f486898eb72398334d63f701397813d9233c0e4d17053c0878ec13f21b8a3c323ab4a69bfdc74a77
+  languageName: node
+  linkType: hard
+
 "doctrine@npm:^2.1.0":
   version: 2.1.0
   resolution: "doctrine@npm:2.1.0"
@@ -2044,6 +2074,19 @@ __metadata:
   dependencies:
     esutils: ^2.0.2
   checksum: fd7673ca77fe26cd5cba38d816bc72d641f500f1f9b25b83e8ce28827fe2da7ad583a8da26ab6af85f834138cf8dae9f69b0cd6ab925f52ddab1754db44d99ce
+  languageName: node
+  linkType: hard
+
+"dot-json@npm:^1.2.2":
+  version: 1.2.2
+  resolution: "dot-json@npm:1.2.2"
+  dependencies:
+    detect-indent: ~6.0.0
+    docopt: ~0.6.2
+    underscore-keypath: ~0.0.22
+  bin:
+    dot-json: bin/dot-json.js
+  checksum: fcd74777eeb2f81e7b86366df0b45da878498cdfcdf4958825b8dccaf377e2717bb6c2b75ab9f273de3f38364072a201e3fb538e6e4c29788b81323621e3cf4a
   languageName: node
   linkType: hard
 
@@ -3348,6 +3391,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"isomorphic-unfetch@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "isomorphic-unfetch@npm:3.1.0"
+  dependencies:
+    node-fetch: ^2.6.1
+    unfetch: ^4.2.0
+  checksum: 82b92fe4ec2823a81ab0fc0d11bd94d710e6f9a940d56b3cba31896d4345ec9ffc7949f4ff31ebcae84f6b95f7ebf3474c4c7452b834eb4078ea3f2c37e459c5
+  languageName: node
+  linkType: hard
+
 "javascript-natural-sort@npm:0.7.1":
   version: 0.7.1
   resolution: "javascript-natural-sort@npm:0.7.1"
@@ -3493,6 +3546,13 @@ __metadata:
   version: 4.5.0
   resolution: "lodash.clone@npm:4.5.0"
   checksum: 5839f22acf3a43c026ac4325f7bcd378f34967415cd0b9fd7efa9bbbf38dc665900d36e040944c5afab94a51ff8a24f6cfc3781fe439705cbad5c722e9506b16
+  languageName: node
+  linkType: hard
+
+"lodash.clonedeep@npm:^4.5.0":
+  version: 4.5.0
+  resolution: "lodash.clonedeep@npm:4.5.0"
+  checksum: 92c46f094b064e876a23c97f57f81fbffd5d760bf2d8a1c61d85db6d1e488c66b0384c943abee4f6af7debf5ad4e4282e74ff83177c9e63d8ff081a4837c3489
   languageName: node
   linkType: hard
 
@@ -3830,6 +3890,20 @@ __metadata:
   bin:
     next: dist/bin/next
   checksum: de001a674ccf1d1c9812e9b775128581582cfec08efe9eabe00ce467fb063f2d04645b03f094e485f458481e65161a3d184874e8994052322b458b99b683c6ad
+  languageName: node
+  linkType: hard
+
+"node-fetch@npm:^2.6.1":
+  version: 2.6.7
+  resolution: "node-fetch@npm:2.6.7"
+  dependencies:
+    whatwg-url: ^5.0.0
+  peerDependencies:
+    encoding: ^0.1.0
+  peerDependenciesMeta:
+    encoding:
+      optional: true
+  checksum: 8d816ffd1ee22cab8301c7756ef04f3437f18dace86a1dae22cf81db8ef29c0bf6655f3215cb0cdb22b420b6fe141e64b26905e7f33f9377a7fa59135ea3e10b
   languageName: node
   linkType: hard
 
@@ -4945,6 +5019,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tr46@npm:~0.0.3":
+  version: 0.0.3
+  resolution: "tr46@npm:0.0.3"
+  checksum: 726321c5eaf41b5002e17ffbd1fb7245999a073e8979085dacd47c4b4e8068ff5777142fc6726d6ca1fd2ff16921b48788b87225cbc57c72636f6efa8efbffe3
+  languageName: node
+  linkType: hard
+
 "tsconfig-paths@npm:^3.14.1":
   version: 3.14.1
   resolution: "tsconfig-paths@npm:3.14.1"
@@ -5108,6 +5189,29 @@ __metadata:
   languageName: node
   linkType: hard
 
+"underscore-keypath@npm:~0.0.22":
+  version: 0.0.22
+  resolution: "underscore-keypath@npm:0.0.22"
+  dependencies:
+    underscore: "*"
+  checksum: 858c1a09cb39ed59bd2447f2658f6e2ea6c0dcc41464b837586ec697b856a57b410fb5569aae859bb8b7e2e62d764e85becf4d6c5dd45eb3859fb9bd39ed2ab4
+  languageName: node
+  linkType: hard
+
+"underscore@npm:*":
+  version: 1.13.6
+  resolution: "underscore@npm:1.13.6"
+  checksum: d5cedd14a9d0d91dd38c1ce6169e4455bb931f0aaf354108e47bd46d3f2da7464d49b2171a5cf786d61963204a42d01ea1332a903b7342ad428deaafaf70ec36
+  languageName: node
+  linkType: hard
+
+"unfetch@npm:^4.2.0":
+  version: 4.2.0
+  resolution: "unfetch@npm:4.2.0"
+  checksum: 6a4b2557e1d921eaa80c4425ce27a404945ec26491ed06e62598f333996a91a44c7908cb26dc7c2746d735762b13276cf4aa41829b4c8f438dde63add3045d7a
+  languageName: node
+  linkType: hard
+
 "unique-filename@npm:^2.0.0":
   version: 2.0.1
   resolution: "unique-filename@npm:2.0.1"
@@ -5146,6 +5250,16 @@ __metadata:
   dependencies:
     punycode: ^2.1.0
   checksum: 7167432de6817fe8e9e0c9684f1d2de2bb688c94388f7569f7dbdb1587c9f4ca2a77962f134ec90be0cc4d004c939ff0d05acc9f34a0db39a3c797dada262633
+  languageName: node
+  linkType: hard
+
+"user-agents@npm:^1.0.934":
+  version: 1.0.1232
+  resolution: "user-agents@npm:1.0.1232"
+  dependencies:
+    dot-json: ^1.2.2
+    lodash.clonedeep: ^4.5.0
+  checksum: 7efd94fc11cbe01b55159d3349000a258dad135481e9102f5c563c5ddf23e9ddaa77dfff25381eeca67e9ac1b0855cd74053d5be92170f6c26a7acc9cfaeb3ce
   languageName: node
   linkType: hard
 
@@ -5206,6 +5320,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"webidl-conversions@npm:^3.0.0":
+  version: 3.0.1
+  resolution: "webidl-conversions@npm:3.0.1"
+  checksum: c92a0a6ab95314bde9c32e1d0a6dfac83b578f8fa5f21e675bc2706ed6981bc26b7eb7e6a1fab158e5ce4adf9caa4a0aee49a52505d4d13c7be545f15021b17c
+  languageName: node
+  linkType: hard
+
 "webpack-bundle-analyzer@npm:4.7.0":
   version: 4.7.0
   resolution: "webpack-bundle-analyzer@npm:4.7.0"
@@ -5222,6 +5343,16 @@ __metadata:
   bin:
     webpack-bundle-analyzer: lib/bin/analyzer.js
   checksum: 4ce3b379c61ce16b2219756843407cc99f2b82cd191f653043f1b705a3e32b3af03834af0dfded98ab852313a892a148bed1a8effaacd6440f028c19f41581f3
+  languageName: node
+  linkType: hard
+
+"whatwg-url@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "whatwg-url@npm:5.0.0"
+  dependencies:
+    tr46: ~0.0.3
+    webidl-conversions: ^3.0.0
+  checksum: b8daed4ad3356cc4899048a15b2c143a9aed0dfae1f611ebd55073310c7b910f522ad75d727346ad64203d7e6c79ef25eafd465f4d12775ca44b90fa82ed9e2c
   languageName: node
   linkType: hard
 
