@@ -1,0 +1,35 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.notification {
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ff392e;
+
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  z-index: 2;
+
+  span {
+    font-size: 10px;
+    font-weight: bold;
+    color: white;
+    line-height: 1;
+  }
+}
+
+.app-name {
+  font-weight: 500;
+  line-height: 1.45;
+  user-select: none;
+}

@@ -1,0 +1,81 @@
+.wrapper {
+  width: fit-content;
+  display: flex;
+}
+
+.container {
+  display: flex;
+  height: 15px;
+  align-items: flex-end;
+  transform: scale(0.8);
+  transform-origin: right center;
+}
+
+.cellularList {
+  display: flex;
+  align-items: flex-end;
+}
+
+.cellularItem {
+  background-color: white;
+  width: 4px;
+  margin-right: 2.5px;
+  border-top-left-radius: 1px;
+  border-top-right-radius: 1px;
+}
+
+.cellularOne {
+  height: 6px;
+}
+
+.cellularTwo {
+  height: 8px;
+}
+
+.cellularThree {
+  height: 12px;
+}
+
+.cellularFour {
+  height: 16px;
+}
+
+.wifiWrapper {
+  margin-bottom: -14px;
+}
+
+.wifi {
+  padding: 3px;
+  border: 3px solid transparent;
+  border-radius: 30px;
+  border-top-color: white;
+}
+
+.batteryWrapper {
+  display: flex;
+  align-items: center;
+  margin-left: 3px;
+}
+
+.batteryContainer {
+  border: 1px solid rgba(255, 255, 255, 0.66);
+  width: 34px;
+  padding: 2px;
+  border-radius: 6px;
+}
+
+.battery {
+  background-color: white;
+  width: 40%;
+  height: 12px;
+  border-radius: 4px;
+}
+
+.batteryElectrode {
+  background-color: rgba(255, 255, 255, 0.66);
+  height: 7px;
+  width: 2px;
+  margin-left: 2px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
