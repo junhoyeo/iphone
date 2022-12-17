@@ -1,1 +1,1 @@
-export { default as DynamicIsland } from '../dynamic-island/src/DynamicIsland';
+export { Phone } from './phone';

@@ -17,5 +17,5 @@
     "declaration": true
   },
   "include": ["**/*.ts", "**/*.tsx"],
-  "exclude": ["dist", "./dynamic-island/pages/**/*"]
+  "exclude": ["docs", "dist", "./dynamic-island/pages/**/*"]
 }
