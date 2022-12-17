@@ -219,3 +219,9 @@
 .device-iphone-14-pro.device-gold .device-power {
   background: #e7d19e;
 }
+
+/* @junhoyeo */
+.device-iphone-14-pro .device-sensors::before,
+.device-iphone-14-pro .device-sensors::after {
+  pointer-events: none;
+}
