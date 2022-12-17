@@ -1,12 +1,6 @@
 .phone {
   border-radius: 68px;
   transition: all 0.2s ease;
-
-  // box-shadow: ${shadow('to-top')};
-
-  // @media screen and (max-width: 600px) {
-  // box-shadow: ${shadow('to-bottom')};
-  // }
 }
 
 .screen {
@@ -21,12 +15,10 @@
   background-color: #060606 !important;
   background-size: cover;
   background-repeat: no-repeat;
-  background-image: url('https://images.unsplash.com/photo-1651833826115-7530e72ce504?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=927&q=80');
 }
 
 .topContainer {
   margin: 0 auto;
-  // width: ${SCREEN_CONTENT_WIDTH - APP_CELL_GAP}px;
   height: 35px;
 
   display: flex;
@@ -41,20 +33,13 @@
 
 .gridWrapper {
   margin: 0 auto;
-  // margin-top: ${DEVICE_HEIGHT * 0.0875}px;
   display: flex;
   flex: 1;
 }
 
 .gridContainer {
   height: 100%;
-  // width: ${SCREEN_CONTENT_WIDTH}px;
   display: grid;
-  // grid-template-columns: repeat(auto-fill, ${APP_CELL_SIZE}px);
-  // grid-template-rows: repeat(
-  //   auto-fill,
-  //   ${DEVICE_WIDTH * (0.016 + 0.15) + DEVICE_WIDTH * (0.12 * 0.695)}px
-  // );
 }
 
 .bottomWrapper {
@@ -81,9 +66,6 @@
   z-index: 1;
   background: inherit;
   overflow: hidden;
-  // height: ${DEVICE_HEIGHT * 0.11}px;
-  // padding: ${0.045 * DEVICE_WIDTH}px ${0.047 * DEVICE_WIDTH}px;
-  background-image: url('/assets/phone/background.jpg');
 
   &::before {
     content: '';
@@ -107,7 +89,5 @@
   font-size: 17px;
   font-weight: 500;
   height: fit-content;
-
   color: #f7f7f7;
-  font-family: var(--SystemFontStack);
 }

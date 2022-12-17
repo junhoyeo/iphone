@@ -225,3 +225,7 @@
 .device-iphone-14-pro .device-sensors::after {
   pointer-events: none;
 }
+.device-iphone-14-pro .device-stripe::after,
+.device-iphone-14-pro .device-stripe::before {
+  box-sizing: border-box;
+}

@@ -18,12 +18,17 @@ const SCREEN_CONTENT_WIDTH = Math.floor(APP_CELL_SIZE * 4);
 
 export type BasicDeviceProps = {
   apps: GridItemProps[];
+  backgroundImage?: string;
 };
 type DeviceProps = BasicDeviceProps & {
   style?: React.CSSProperties;
 };
 
-export const Device: React.FC<DeviceProps> = ({ style, apps }) => {
+export const Device: React.FC<DeviceProps> = ({
+  style,
+  apps,
+  backgroundImage,
+}) => {
   const currentTime = useMemo(() => {
     const date = new Date();
     return `${date.getHours() || 12}:${date
@@ -46,11 +51,17 @@ export const Device: React.FC<DeviceProps> = ({ style, apps }) => {
     <>
       <div
         className={`${classes.phone} device device-iphone-14-pro`}
-        style={style}
+        style={{ ...style, boxShadow: shadow('to-top') }}
       >
         <div ref={deviceFrameRef} className="device-frame">
-          <div className={`${classes.screen} device-screen`}>
-            <div className={classes.topContainer}>
+          <div
+            className={`${classes.screen} device-screen`}
+            style={{ backgroundImage: `url(${backgroundImage})` }}
+          >
+            <div
+              className={classes.topContainer}
+              style={{ width: SCREEN_CONTENT_WIDTH - APP_CELL_GAP }}
+            >
               <span className={`${classes.clock} font-sans`}>
                 {currentTime}
               </span>
@@ -73,8 +84,21 @@ export const Device: React.FC<DeviceProps> = ({ style, apps }) => {
 
               <Symbols style={{ marginRight: -APP_CELL_GAP / 4 }} />
             </div>
-            <div className={classes.gridWrapper}>
-              <div className={classes.gridContainer}>
+            <div
+              className={classes.gridWrapper}
+              style={{ marginTop: DEVICE_HEIGHT * 0.0875 }}
+            >
+              <div
+                className={classes.gridContainer}
+                style={{
+                  width: SCREEN_CONTENT_WIDTH,
+                  gridTemplateColumns: `repeat(auto-fill, ${APP_CELL_SIZE}px)`,
+                  gridTemplateRows: `repeat(auto-fill, ${
+                    DEVICE_WIDTH * (0.016 + 0.15) +
+                    DEVICE_WIDTH * (0.12 * 0.695)
+                  }px)`,
+                }}
+              >
                 {apps.map((appItem, appIndex) => (
                   <GridItem key={appIndex} {...appItem} />
                 ))}
@@ -82,7 +106,16 @@ export const Device: React.FC<DeviceProps> = ({ style, apps }) => {
             </div>
             <div className={classes.bottomWrapper}>
               <Pagination />
-              <div className={classes.bottomContainer}>
+              <div
+                className={classes.bottomContainer}
+                style={{
+                  height: DEVICE_HEIGHT * 0.11,
+                  padding: `${0.045 * DEVICE_WIDTH}px ${
+                    0.047 * DEVICE_WIDTH
+                  }px`,
+                  backgroundImage: `url(${backgroundImage})`,
+                }}
+              >
                 <BottomIcons.Phone />
                 <BottomIcons.Mail />
                 <BottomIcons.Safari />
