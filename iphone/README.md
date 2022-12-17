@@ -16,8 +16,27 @@
   </a>
 </p>
 
+## 🏴‍☠️ @junhoyeo/iphone
+> 🏝️ iPhone 14 Pro with dynamic island, on the web.
+
 > **Warning**<br/>
 > This package is under rapid development 🛠
+
+```bash
+yarn add @junhoyeo/iphone
+```
+
+```tsx
+<Phone
+  frameColor="purple"
+  transformScale={1}
+  apps={APPS}
+  backgroundImage={BACKGROUND_IMAGE_URL}
+/>
+```
+
+If you found this project interesting, please consider following me([GitHub](https://github.com/junhoyeo)/[Twitter](https://twitter.com/_junhoyeo)) or [⭐️ giving it a star](https://github.com/junhoyeo/iphone/stargazers).
+
 
 ## Powered by
 
