@@ -1,5 +1,7 @@
-// @ts-ignore
 import { Phone } from '@junhoyeo/iphone';
+
+import '@junhoyeo/iphone/dist/style.css';
+
 import React from 'react';
 import styled from 'styled-components';
 
