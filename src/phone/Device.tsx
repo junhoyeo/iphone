@@ -17,6 +17,7 @@ const APP_CELL_GAP = APP_CELL_SIZE - APP_ICON_SIZE;
 const SCREEN_CONTENT_WIDTH = Math.floor(APP_CELL_SIZE * 4);
 
 export type BasicDeviceProps = {
+  color: 'purple' | 'silver' | 'black' | 'gold';
   apps: GridItemProps[];
   backgroundImage?: string;
 };
@@ -28,7 +29,10 @@ export const Device: React.FC<DeviceProps> = ({
   style,
   apps,
   backgroundImage,
+  color,
 }) => {
+  const deviceColorClass = color === 'purple' ? undefined : `device-${color}`;
+
   const currentTime = useMemo(() => {
     const date = new Date();
     return `${date.getHours() || 12}:${date
@@ -50,7 +54,9 @@ export const Device: React.FC<DeviceProps> = ({
   return (
     <>
       <div
-        className={`${classes.phone} device device-iphone-14-pro`}
+        className={`${classes.phone} device ${
+          deviceColorClass || ''
+        } device-iphone-14-pro`}
         style={{ ...style, boxShadow: shadow('to-top') }}
       >
         <div ref={deviceFrameRef} className="device-frame">

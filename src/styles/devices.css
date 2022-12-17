@@ -229,3 +229,12 @@
 .device-iphone-14-pro .device-stripe::before {
   box-sizing: border-box;
 }
+.device-frame {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.device-btns,
+.device-btns::after,
+.device-btns::before,
+.device-power {
+  transition: background 0.2s ease;
+}
