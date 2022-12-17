@@ -1,11 +1,21 @@
 {
   "compilerOptions": {
+    "allowJs": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "incremental": true,
+    "resolveJsonModule": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "target": "es5",
     "outDir": "dist",
+    "rootDir": ".",
     "baseUrl": "src",
-    "rootDir": "src",
-    "declaration": true,
-    "emitDeclarationOnly": true,
-    "noEmit": false
+    "declaration": true
   },
-  "include": ["src"]
+  "include": ["**/*.ts", "**/*.tsx"]
 }

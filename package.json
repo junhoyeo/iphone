@@ -4,19 +4,18 @@
   "repository": "https://github.com/junhoyeo/iphone",
   "author": "Junho Yeo <i@junho.io>",
   "license": "MIT",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/src/index.js",
+  "types": "./dist/src/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "tsc && swc src -d dist"
+    "build": "tsc"
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^3.7.1",
-    "@swc/cli": "^0.1.57",
-    "@swc/core": "^1.3.23",
     "prettier": "^2.8.1",
     "typescript": "^4.9.4"
-  }
+  },
+  "dependencies": {}
 }

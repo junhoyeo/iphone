@@ -1,0 +1,3 @@
+[submodule "dynamic-island"]
+	path = dynamic-island
+	url = https://github.com/junhoyeo/dynamic-island
