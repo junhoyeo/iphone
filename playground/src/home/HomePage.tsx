@@ -17,21 +17,21 @@ const FRAME_COLORS: { color: DeviceFrameColor; src: string }[] = [
 
 const HomePage = () => {
   const [frameColor, setFrameColor] = useState<DeviceFrameColor>('purple');
-  // const [callState, setCallState] = useState<DynamicIslandSize>('default');
-  const [musicPlayerState, setMusicPlayerState] =
+  const [dynamicIslandState, setDynamicIslandState] =
     useState<DynamicIslandSize>('compact');
 
   const props = useMemo(
-    () => ({
-      default: 'compact',
-      state: musicPlayerState,
-      setState: setMusicPlayerState,
-      onClick:
-        musicPlayerState === 'compact'
-          ? () => setMusicPlayerState('ultra')
-          : () => setMusicPlayerState('compact'),
-    }),
-    [musicPlayerState],
+    () =>
+      ({
+        default: 'compact',
+        state: dynamicIslandState,
+        setState: setDynamicIslandState,
+        onClick:
+          dynamicIslandState === 'compact'
+            ? () => setDynamicIslandState('ultra')
+            : () => setDynamicIslandState('compact'),
+      } as const),
+    [dynamicIslandState],
   );
 
   return (
@@ -52,6 +52,24 @@ const HomePage = () => {
           </FrameColorRing>
         ))}
       </FrameColorList>
+      <DynamicIslandToolbar>
+        <DynamicIslandToolbarButton
+          type="button"
+          onClick={() =>
+            setDynamicIslandState((prev) =>
+              prev === 'default' || prev === 'compact' ? 'large' : 'compact',
+            )
+          }
+        >
+          Toggle Call
+        </DynamicIslandToolbarButton>
+        <DynamicIslandToolbarButton
+          type="button"
+          onClick={() => setDynamicIslandState('default')}
+        >
+          Back to Default
+        </DynamicIslandToolbarButton>
+      </DynamicIslandToolbar>
       <Phone
         frameColor={frameColor}
         transformScale={1}
@@ -98,4 +116,21 @@ const FrameColorButton = styled.button`
   background-size: 104%;
   background-size: calc(100% + 2px);
   background-position: center;
+`;
+
+const DynamicIslandToolbar = styled.div`
+  margin-bottom: 32px;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+`;
+const DynamicIslandToolbarButton = styled.button`
+  padding: 8px 16px;
+  border: 0;
+  border-radius: 8px;
+  background-color: #26292b;
+  color: #fff;
+  cursor: pointer;
 `;
