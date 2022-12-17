@@ -639,7 +639,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@junhoyeo/iphone-docs@workspace:playground"
   dependencies:
-    "@junhoyeo/iphone": ./..
+    "@junhoyeo/iphone": "workspace:*"
     "@next/bundle-analyzer": ^13.0.6
     "@types/node": ^18.11.11
     "@types/react": ^18.0.26
@@ -659,14 +659,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@junhoyeo/iphone@file:./..::locator=%40junhoyeo%2Fiphone-docs%40workspace%3Aplayground":
-  version: 1.0.0
-  resolution: "@junhoyeo/iphone@file:./..#./..::hash=473489&locator=%40junhoyeo%2Fiphone-docs%40workspace%3Aplayground"
-  checksum: ac6ac35b28c3d8c14e7f2375e503a2ed40d2b47316934d71de4d64928a1c10f584fdc712e9fb137c156259d32169c2fea1c8727faec5eafd04dea1ff7a94ed75
-  languageName: node
-  linkType: hard
-
-"@junhoyeo/iphone@workspace:iphone":
+"@junhoyeo/iphone@workspace:*, @junhoyeo/iphone@workspace:iphone":
   version: 0.0.0-use.local
   resolution: "@junhoyeo/iphone@workspace:iphone"
   dependencies:
