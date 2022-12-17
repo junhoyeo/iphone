@@ -1,9 +1,10 @@
 import react from '@vitejs/plugin-react';
 import path from 'path';
 import { defineConfig } from 'vite';
+import svgr from 'vite-plugin-svgr';
 
 export default defineConfig({
-  plugins: [react({ jsxRuntime: 'classic' })],
+  plugins: [svgr({ exportAsDefault: true }), react({ jsxRuntime: 'classic' })],
   build: {
     commonjsOptions: {
       include: [/dynamic-island/, /node_modules/],
