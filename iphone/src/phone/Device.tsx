@@ -23,7 +23,7 @@ export type BasicDeviceProps = {
   frameColor: DeviceFrameColor;
   apps: GridItemProps[];
   backgroundImage?: string;
-  dynamicIslandProps: DynamicIslandProps;
+  dynamicIslandProps: Omit<DynamicIslandProps, 'children'>;
 };
 type DeviceProps = BasicDeviceProps & {
   style?: React.CSSProperties;
