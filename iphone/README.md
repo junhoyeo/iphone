@@ -17,7 +17,7 @@
 </p>
 
 > **Warning**<br/>
-> This package is still under rapid development 🛠
+> This package is under rapid development 🛠
 
 ## Powered by
 
@@ -29,3 +29,7 @@
 
 - [Fork](https://github.com/junhoyeo/dynamic-island) of [anaclumos/dynamic-island](https://github.com/anaclumos/dynamic-island)
 - [picturepan2/devices.css](https://github.com/picturepan2/devices.css)
+
+## Powers
+
+- [junhoyeo/junho.io](https://github.com/junhoyeo/junho.io)
