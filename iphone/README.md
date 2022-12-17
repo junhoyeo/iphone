@@ -40,7 +40,8 @@ yarn add @junhoyeo/iphone
 />
 ```
 
-If you found this project interesting, please consider following me([GitHub](https://github.com/junhoyeo)/[Twitter](https://twitter.com/_junhoyeo)) or [⭐️ giving it a star](https://github.com/junhoyeo/iphone/stargazers).
+- **Special thanks to Sunghyun Cho([@anaclumos](https://github.com/anaclumos))! The implementation of Dynamic Island is based on his work.**
+- If you found this project interesting, please consider following me([GitHub](https://github.com/junhoyeo)/[Twitter](https://twitter.com/_junhoyeo)) or [⭐️ giving it a star](https://github.com/junhoyeo/iphone/stargazers).
 
 ## Powered by
 
