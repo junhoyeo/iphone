@@ -1,14 +1,14 @@
-import React from 'react';
+import { DivComponent } from '../types/html';
+import { BasicDeviceProps, Device } from './Device';
 
-import { DivComponent } from '@/types/html';
-
-import Device from './Device';
-
-type PhoneProps = {
+export type PhoneProps = BasicDeviceProps & {
   transformScale: number;
 };
 
-const Phone: React.FC<PhoneProps> = ({ transformScale }) => {
+export const Phone: React.FC<PhoneProps> = ({
+  transformScale,
+  ...deviceProps
+}) => {
   return (
     <Wrapper>
       <Device
@@ -16,12 +16,11 @@ const Phone: React.FC<PhoneProps> = ({ transformScale }) => {
           transform: `scale(${transformScale})`,
           transformOrigin: 'top center',
         }}
+        {...deviceProps}
       />
     </Wrapper>
   );
 };
-
-export default Phone;
 
 const Wrapper: DivComponent = ({ style, ...props }) => (
   <div

@@ -1,7 +1,6 @@
 import { getSvgPath } from 'figma-squircle';
 
-import { DivComponent } from '@/types/html';
-
+import { DivComponent } from '../../types/html';
 import { DEVICE_WIDTH } from '../constants';
 import classes from './app-icon.module.scss';
 

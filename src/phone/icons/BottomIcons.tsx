@@ -23,13 +23,6 @@ const Safari = () => {
 
 const Music = () => <MusicIcon icon="/assets/phone/icons/bottom/music.png" />;
 
-export default {
-  Phone,
-  Mail,
-  Safari,
-  Music,
-};
-
 const PhoneIcon: React.FC<AppIconProps> = ({ style, ...props }) => (
   <AppIcon
     {...props}
@@ -39,7 +32,6 @@ const PhoneIcon: React.FC<AppIconProps> = ({ style, ...props }) => (
     }}
   />
 );
-
 const MailIcon: React.FC<AppIconProps> = ({ style, ...props }) => (
   <AppIcon
     {...props}
@@ -49,7 +41,6 @@ const MailIcon: React.FC<AppIconProps> = ({ style, ...props }) => (
     }}
   />
 );
-
 const MusicIcon: React.FC<AppIconProps> = ({ style, ...props }) => (
   <AppIcon
     {...props}
@@ -59,3 +50,10 @@ const MusicIcon: React.FC<AppIconProps> = ({ style, ...props }) => (
     }}
   />
 );
+
+export const BottomIcons = {
+  Phone,
+  Mail,
+  Safari,
+  Music,
+};

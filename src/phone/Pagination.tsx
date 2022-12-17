@@ -1,8 +1,6 @@
-import React from 'react';
-
 import classes from './pagination.module.scss';
 
-const Pagination: React.FC = () => {
+export const Pagination: React.FC = () => {
   return (
     <div className={classes.wrapper}>
       {/* <div className={classes.paginationCircle} /> */}
@@ -10,5 +8,3 @@ const Pagination: React.FC = () => {
     </div>
   );
 };
-
-export default Pagination;

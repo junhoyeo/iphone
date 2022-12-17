@@ -1,10 +1,9 @@
 import React from 'react';
 
-import { DivComponent } from '@/types/html';
-
+import { DivComponent } from '../types/html';
 import classes from './symbols.module.scss';
 
-const Symbols: DivComponent = (props) => {
+export const Symbols: DivComponent = (props) => {
   return (
     <div className={classes.wrapper} {...props}>
       <div className={classes.container}>
@@ -33,5 +32,3 @@ const Symbols: DivComponent = (props) => {
     </div>
   );
 };
-
-export default Symbols;

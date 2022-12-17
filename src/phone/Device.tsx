@@ -1,27 +1,28 @@
-import createGlobe from 'cobe';
-import DynamicIsland from 'dynamic-island/src/DynamicIsland';
-import { DynamicIslandPhoneCall } from 'dynamic-island/src/PhoneCall';
-import { DynamicIslandSize } from 'dynamic-island/types';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 
-import { shadow } from '@/styles/shadow';
-
-import Pagination from './Pagination';
-import Symbols from './Symbols';
-import { DEVICE_HEIGHT, DEVICE_WIDTH, INSTALLED_APPS } from './constants';
+import DynamicIsland from '../../dynamic-island/src/DynamicIsland';
+import { DynamicIslandPhoneCall } from '../../dynamic-island/src/PhoneCall';
+import { DynamicIslandSize } from '../../dynamic-island/types';
+import { shadow } from '../utils/shadow';
+import { Pagination } from './Pagination';
+import { Symbols } from './Symbols';
+import { DEVICE_HEIGHT, DEVICE_WIDTH } from './constants';
 import { APP_ICON_SIZE } from './icons/AppIcon';
-import BottomIcons from './icons/BottomIcons';
-import GridItem from './icons/GridItem';
+import { BottomIcons } from './icons/BottomIcons';
+import { GridItem, GridItemProps } from './icons/GridItem';
 
 const APP_CELL_SIZE = Math.floor(DEVICE_WIDTH * 0.156 + 22.6);
 const APP_CELL_GAP = APP_CELL_SIZE - APP_ICON_SIZE;
 const SCREEN_CONTENT_WIDTH = Math.floor(APP_CELL_SIZE * 4);
 
-interface IDevice {
+export type BasicDeviceProps = {
+  apps: GridItemProps[];
+};
+type DeviceProps = BasicDeviceProps & {
   style?: React.CSSProperties;
-}
+};
 
-const Device: React.FC<IDevice> = ({ style }) => {
+export const Device: React.FC<DeviceProps> = ({ style, apps }) => {
   const currentTime = useMemo(() => {
     const date = new Date();
     return `${date.getHours() || 12}:${date
@@ -33,56 +34,6 @@ const Device: React.FC<IDevice> = ({ style }) => {
   const [callState, setCallState] = useState<DynamicIslandSize>('default');
 
   const deviceFrameRef = useRef<HTMLDivElement>(null);
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  useEffect(() => {
-    if (!canvasRef.current || !deviceFrameRef.current) {
-      return;
-    }
-
-    const globeSize = parseInt(
-      window.getComputedStyle(deviceFrameRef.current).width,
-    );
-
-    const southKorea: [number, number] = [37.5326, 127.024612];
-    const maxPhi = 6.28;
-    const greenwichPhi = 4.38;
-
-    let phi = (maxPhi / 180) * southKorea[1] + greenwichPhi;
-
-    const globe = createGlobe(canvasRef.current, {
-      devicePixelRatio: 2,
-      width: globeSize * 2,
-      height: globeSize * 2,
-      phi,
-      theta: 0.2,
-      dark: 1,
-      diffuse: 1.2,
-      scale: 1.25,
-      mapSamples: 16000,
-      mapBrightness: 6,
-      baseColor: [0.12, 0.12, 0.12],
-      markerColor: [1, 1, 1],
-      glowColor: [0.24, 0.24, 0.24],
-      markers: [{ location: southKorea, size: 0.05 }],
-      onRender: (state) => {
-        state.phi = phi;
-        phi += 0.003;
-      },
-    });
-
-    setTimeout(() => (canvasRef.current!.style.opacity = '1'));
-
-    window.onbeforeunload = () => {
-      if (canvasRef.current) {
-        canvasRef.current.style.transition = 'opacity 0.2s ease';
-        canvasRef.current.style.opacity = '0';
-      }
-    };
-
-    return () => {
-      globe.destroy();
-    };
-  }, []);
 
   useEffect(() => {
     setTimeout(() => {
@@ -118,7 +69,7 @@ const Device: React.FC<IDevice> = ({ style }) => {
             </div>
             <div className="grid-wrapper">
               <div className="grid-container">
-                {INSTALLED_APPS.map((appItem, appIndex) => (
+                {apps.map((appItem, appIndex) => (
                   <GridItem key={appIndex} {...appItem} />
                 ))}
               </div>
@@ -132,8 +83,6 @@ const Device: React.FC<IDevice> = ({ style }) => {
                 <BottomIcons.Music />
               </div>
             </div>
-
-            <canvas className="globe-canvas" ref={canvasRef} />
           </div>
         </div>
         <div className="device-stripe"></div>
@@ -279,5 +228,3 @@ const Device: React.FC<IDevice> = ({ style }) => {
     </>
   );
 };
-
-export default Device;
