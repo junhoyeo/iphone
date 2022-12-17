@@ -1,5 +1,5 @@
 {
-  "name": "@junhoyeo/iphone-docs",
+  "name": "@junhoyeo/iphone-playground",
   "version": "1.0.0",
   "private": true,
   "author": "Junho Yeo <i@junho.io>",
@@ -18,7 +18,7 @@
     "styled-reset": "^4.4.4"
   },
   "devDependencies": {
-    "@junhoyeo/iphone": "./..",
+    "@junhoyeo/iphone": "workspace:*",
     "@next/bundle-analyzer": "^13.0.6",
     "@types/node": "^18.11.11",
     "@types/react": "^18.0.26",

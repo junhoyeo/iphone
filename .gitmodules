@@ -1,3 +1,3 @@
-[submodule "dynamic-island"]
-	path = dynamic-island
-	url = https://github.com/junhoyeo/dynamic-island
+[submodule "iphone/dynamic-island"]
+	path = iphone/dynamic-island
+	url = https://junhoyeo@github.com/junhoyeo/dynamic-island
