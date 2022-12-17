@@ -4,27 +4,39 @@
   "repository": "https://github.com/junhoyeo/iphone",
   "author": "Junho Yeo <i@junho.io>",
   "license": "MIT",
-  "main": "./dist/src/index.js",
+  "main": "./dist/index.umd.js",
+  "module": "./dist/index.es.js",
   "types": "./dist/src/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.umd.js"
+    }
+  },
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "tsc && cp -R ./dynamic-island/public ./dist/dynamic-island/public"
-  },
-  "devDependencies": {
-    "@ianvs/prettier-plugin-sort-imports": "^3.7.1",
-    "@types/dedent": "^0.7.0",
-    "@types/react": "^18.0.26",
-    "prettier": "^2.8.1",
-    "typescript": "^4.9.4"
+    "build": "vite build && tsc"
   },
   "dependencies": {
     "dedent": "^0.7.0",
     "figma-squircle": "^0.3.0",
     "framer-motion": "^7.10.2",
     "next": "^13.0.7",
-    "react": "^18.2.0",
     "sass": "^1.57.0"
+  },
+  "devDependencies": {
+    "@ianvs/prettier-plugin-sort-imports": "^3.7.1",
+    "@originjs/vite-plugin-commonjs": "^1.0.3",
+    "@rollup/plugin-typescript": "^10.0.1",
+    "@types/dedent": "^0.7.0",
+    "@types/react": "^18.0.26",
+    "@vitejs/plugin-react": "3.0.0-alpha.2",
+    "prettier": "^2.8.1",
+    "react-dom": "^18.2.0",
+    "typescript": "^4.9.4",
+    "vite": "^4.0.1",
+    "vite-plugin-dts": "^1.7.1"
   }
 }

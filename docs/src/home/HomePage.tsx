@@ -1,3 +1,4 @@
+// @ts-ignore
 import { Phone } from '@junhoyeo/iphone';
 import React from 'react';
 import styled from 'styled-components';

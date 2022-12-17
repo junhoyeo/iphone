@@ -7,12 +7,12 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 module.exports = withPlugins(
   {
     reactStrictMode: true,
-    experimental: {
-      appDir: true,
-      transpilePackages: ['@junhoyeo/iphone'],
-    },
     compiler: {
       styledComponents: true,
+    },
+    images: {
+      dangerouslyAllowSVG: true,
+      domains: ['github.com', 'cho.sh', 'cataas.com', 'mzstatic.com'],
     },
   },
   [withBundleAnalyzer],
