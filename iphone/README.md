@@ -1,3 +1,7 @@
+<a href="https://github.com/junhoyeo/iphone">
+  <img src="https://iphone.junho.io/og-image.png" />
+</a>
+
 <p align="center">
   <h1 align="center">
     @junhoyeo/iphone
@@ -17,6 +21,7 @@
 </p>
 
 ## 🏴‍☠️ @junhoyeo/iphone
+
 > 🏝️ iPhone 14 Pro with dynamic island, on the web.
 
 > **Warning**<br/>
@@ -36,7 +41,6 @@ yarn add @junhoyeo/iphone
 ```
 
 If you found this project interesting, please consider following me([GitHub](https://github.com/junhoyeo)/[Twitter](https://twitter.com/_junhoyeo)) or [⭐️ giving it a star](https://github.com/junhoyeo/iphone/stargazers).
-
 
 ## Powered by
 
