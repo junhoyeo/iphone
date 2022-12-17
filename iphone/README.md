@@ -1,4 +1,4 @@
-<a href="https://github.com/junhoyeo/iphone">
+<a href="https://iphone.junho.io">
   <img src="https://iphone.junho.io/og-image.png" />
 </a>
 
