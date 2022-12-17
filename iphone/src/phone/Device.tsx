@@ -1,8 +1,10 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useMemo, useRef } from 'react';
 
-import DynamicIsland from '../../dynamic-island/src/DynamicIsland';
+import DynamicIsland, {
+  DynamicIslandProps,
+} from '../../dynamic-island/src/DynamicIsland';
+import { DynamicIslandMusicPlayer } from '../../dynamic-island/src/MusicPlayer';
 import { DynamicIslandPhoneCall } from '../../dynamic-island/src/PhoneCall';
-import { DynamicIslandSize } from '../../dynamic-island/types';
 import { shadow } from '../utils/shadow';
 import { Pagination } from './Pagination';
 import { Symbols } from './Symbols';
@@ -21,6 +23,7 @@ export type BasicDeviceProps = {
   frameColor: DeviceFrameColor;
   apps: GridItemProps[];
   backgroundImage?: string;
+  dynamicIslandProps: DynamicIslandProps;
 };
 type DeviceProps = BasicDeviceProps & {
   style?: React.CSSProperties;
@@ -31,6 +34,7 @@ export const Device: React.FC<DeviceProps> = ({
   frameColor,
   apps,
   backgroundImage,
+  dynamicIslandProps,
 }) => {
   const deviceFrameColorClass =
     frameColor === 'purple' ? undefined : `device-${frameColor}`;
@@ -43,15 +47,7 @@ export const Device: React.FC<DeviceProps> = ({
       .padStart(2, '0')}`;
   }, []);
 
-  const [callState, setCallState] = useState<DynamicIslandSize>('default');
-
   const deviceFrameRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setCallState(callState === 'default' ? 'large' : 'default');
-    }, 3_000);
-  }, []);
 
   return (
     <>
@@ -75,18 +71,15 @@ export const Device: React.FC<DeviceProps> = ({
               </span>
 
               <div className="dynamic-island-container absolute h-[35px] top-0 left-0 right-0 w-full flex items-center">
-                <DynamicIsland
-                  id="phone-call"
-                  default="default"
-                  state={callState}
-                  setState={setCallState}
-                  onClick={
-                    callState === 'default'
-                      ? () => setCallState('large')
-                      : () => setCallState('default')
-                  }
-                >
-                  <DynamicIslandPhoneCall size={callState} />
+                <DynamicIsland {...dynamicIslandProps}>
+                  {(dynamicIslandProps.state === 'default' ||
+                    dynamicIslandProps.state == 'large') && (
+                    <DynamicIslandPhoneCall size={dynamicIslandProps.state} />
+                  )}
+                  {(dynamicIslandProps.state === 'compact' ||
+                    dynamicIslandProps.state === 'ultra') && (
+                    <DynamicIslandMusicPlayer size={dynamicIslandProps.state} />
+                  )}
                 </DynamicIsland>
               </div>
 
