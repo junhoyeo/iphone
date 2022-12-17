@@ -8,5 +8,13 @@
     "iphone",
     "playground"
   ],
-  "packageManager": "yarn@3.3.0"
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev --parallel",
+    "format": "prettier --write ."
+  },
+  "packageManager": "yarn@3.3.0",
+  "devDependencies": {
+    "turbo": "^1.6.3"
+  }
 }
