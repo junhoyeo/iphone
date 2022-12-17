@@ -3,6 +3,8 @@ import React from 'react';
 
 import { GlobalStyle } from '@/components/GlobalStyle';
 
+import '@junhoyeo/iphone/dist/style.css';
+
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <React.Fragment>
