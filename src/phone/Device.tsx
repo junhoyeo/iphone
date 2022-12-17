@@ -51,7 +51,9 @@ export const Device: React.FC<DeviceProps> = ({ style, apps }) => {
         <div ref={deviceFrameRef} className="device-frame">
           <div className={`${classes.screen} device-screen`}>
             <div className={classes.topContainer}>
-              <span className={classes.clock}>{currentTime}</span>
+              <span className={`${classes.clock} font-sans`}>
+                {currentTime}
+              </span>
 
               <div className="dynamic-island-container absolute h-[35px] top-0 left-0 right-0 w-full flex items-center">
                 <DynamicIsland
