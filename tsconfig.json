@@ -16,5 +16,6 @@
     "rootDir": ".",
     "declaration": true
   },
-  "include": ["**/*.ts", "**/*.tsx"]
+  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": ["dist", "./dynamic-island/pages/**/*"]
 }

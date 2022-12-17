@@ -22,6 +22,10 @@
   "dependencies": {
     "dedent": "^0.7.0",
     "figma-squircle": "^0.3.0",
-    "react": "^18.2.0"
+    "framer-motion": "^7.10.2",
+    "next": "^13.0.7",
+    "react": "^18.2.0",
+    "sass": "^1.57.0",
+    "styled-jsx": "^5.1.1"
   }
 }
