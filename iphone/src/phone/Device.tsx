@@ -11,7 +11,6 @@ import { Symbols } from './Symbols';
 import { DEVICE_HEIGHT, DEVICE_WIDTH } from './constants';
 import classes from './device.module.scss';
 import { APP_ICON_SIZE } from './icons/AppIcon';
-import { BottomIcons } from './icons/BottomIcons';
 import { GridItem, GridItemProps } from './icons/GridItem';
 
 const APP_CELL_SIZE = Math.floor(DEVICE_WIDTH * 0.156 + 22.6);
@@ -22,6 +21,7 @@ export type DeviceFrameColor = 'purple' | 'silver' | 'black' | 'gold';
 export type BasicDeviceProps = {
   frameColor: DeviceFrameColor;
   apps: GridItemProps[];
+  dock: GridItemProps[];
   backgroundImage?: string;
   dynamicIslandProps: Omit<DynamicIslandProps, 'children'>;
 };
@@ -33,6 +33,7 @@ export const Device: React.FC<DeviceProps> = ({
   style,
   frameColor,
   apps,
+  dock,
   backgroundImage,
   dynamicIslandProps,
 }) => {
@@ -117,10 +118,9 @@ export const Device: React.FC<DeviceProps> = ({
                   backgroundImage: `url(${backgroundImage})`,
                 }}
               >
-                <BottomIcons.Phone />
-                <BottomIcons.Mail />
-                <BottomIcons.Safari />
-                <BottomIcons.Music />
+                {dock.slice(0, 4).map((appItem, appIndex) => (
+                  <GridItem dock key={appIndex} {...appItem} />
+                ))}
               </div>
             </div>
           </div>
