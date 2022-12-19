@@ -32,12 +32,19 @@ yarn add @junhoyeo/iphone
 ```
 
 ```tsx
+import { Phone, type GridItemProps } from '@junhoyeo/iphone';
+
+const APPS: GridItemProps[] = [];
+const DOCK: GridItemProps[] = [];
+const BACKGROUND_IMAGE_URL: string = '';
+
 <Phone
   frameColor="purple"
   transformScale={1}
   apps={APPS}
+  dock={DOCK}
   backgroundImage={BACKGROUND_IMAGE_URL}
-/>
+/>;
 ```
 
 - **Special thanks to Sunghyun Cho([@anaclumos](https://github.com/anaclumos))! The implementation of Dynamic Island was made possible by his work.**
