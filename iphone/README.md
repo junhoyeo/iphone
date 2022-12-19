@@ -1,5 +1,5 @@
 <a href="https://iphone.junho.io">
-  <img src="https://iphone.junho.io/og-image.png" />
+  <img src="https://iphone.junho.io/og-image.jpg" />
 </a>
 
 <p align="center">

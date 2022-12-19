@@ -3,7 +3,7 @@ import Head from 'next/head';
 const meta = {
   title: 'iPhone Playground',
   description: '🏝️ iPhone 14 Pro with dynamic island, on the web.',
-  image: 'https://iphone.junho.io/og-image.png',
+  image: 'https://iphone.junho.io/og-image.jpg',
   url: 'https://iphone.junho.io',
 };
 
