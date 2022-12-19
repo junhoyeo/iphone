@@ -34,6 +34,8 @@ yarn add @junhoyeo/iphone
 ```tsx
 import { Phone, type GridItemProps } from '@junhoyeo/iphone';
 
+import '@junhoyeo/iphone/dist/style.css';
+
 const APPS: GridItemProps[] = [];
 const DOCK: GridItemProps[] = [];
 const BACKGROUND_IMAGE_URL: string = '';
