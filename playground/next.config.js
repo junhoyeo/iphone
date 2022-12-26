@@ -10,6 +10,9 @@ module.exports = withPlugins(
     compiler: {
       styledComponents: true,
     },
+    experimental: {
+      transpilePackages: ['antd-mobile'],
+    },
     images: {
       dangerouslyAllowSVG: true,
       domains: ['github.com', 'cho.sh', 'cataas.com', 'mzstatic.com'],
