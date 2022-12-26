@@ -7,6 +7,8 @@ import { NoticeBar } from 'antd-mobile';
 import React, { useMemo, useState } from 'react';
 import styled from 'styled-components';
 
+import { useWindowSize } from '@/hooks/useWindowSize';
+
 import { MetaHead } from './MetaHead';
 import { DOCK } from './constants/dock';
 
@@ -37,6 +39,11 @@ const HomePage = () => {
       } as const),
     [dynamicIslandState],
   );
+
+  const { width: windowWidth } = useWindowSize();
+  const transformScale = useMemo(() => {
+    return windowWidth <= 500 ? 0.65 : 1;
+  }, [windowWidth]);
 
   return (
     <Container>
@@ -98,7 +105,7 @@ const HomePage = () => {
       <Phone
         appBarBrightness="light"
         frameColor={frameColor}
-        transformScale={1}
+        transformScale={transformScale}
         apps={[]}
         dock={DOCK}
         backgroundImage={BACKGROUND_IMAGE_URL}
@@ -167,6 +174,7 @@ const DynamicIslandToolbarButton = styled.button`
 `;
 
 const NoticeBarContainer = styled.div`
+  padding: 0 16px;
   margin: 0 auto 32px;
   width: 100%;
   max-width: 400px;
