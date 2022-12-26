@@ -10,6 +10,7 @@ import {
 import { Action } from 'antd-mobile/es/components/action-sheet';
 import { Step } from 'antd-mobile/es/components/steps/step';
 import { NextPage } from 'next';
+import Link from 'next/link';
 import React, { useCallback, useState } from 'react';
 import styled from 'styled-components';
 
@@ -63,6 +64,12 @@ const DemoPage: NextPage = () => {
       <DemoBlock title="指令式">
         <DemoActionSheetEvents />
       </DemoBlock>
+
+      <Link href="/demo/success">
+        <Button block color="primary" size="large">
+          Next
+        </Button>
+      </Link>
     </ScreenContent>
   );
 };

@@ -709,6 +709,7 @@ __metadata:
     "@types/react-dom": ^18.0.9
     "@types/styled-components": ^5.1.26
     antd-mobile: ^5.27.0
+    antd-mobile-icons: ^0.3.0
     eslint: ^8.29.0
     eslint-config-next: ^13.0.6
     eslint-config-prettier: ^8.5.0
