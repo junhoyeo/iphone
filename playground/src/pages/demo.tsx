@@ -2,17 +2,15 @@ import {
   ActionSheet,
   AutoCenter,
   Button,
+  Dialog,
   NavBar,
   Steps,
   Toast,
 } from 'antd-mobile';
-import {
-  Action,
-  ActionSheetShowHandler,
-} from 'antd-mobile/es/components/action-sheet';
+import { Action } from 'antd-mobile/es/components/action-sheet';
 import { Step } from 'antd-mobile/es/components/steps/step';
 import { NextPage } from 'next';
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useState } from 'react';
 import styled from 'styled-components';
 
 import { DemoBlock } from '@/home/components/antd/DemoBlock';
@@ -63,7 +61,7 @@ const DemoPage: NextPage = () => {
       </DemoBlock>
 
       <DemoBlock title="指令式">
-        <Imperative />
+        <DemoActionSheetEvents />
       </DemoBlock>
     </ScreenContent>
   );
@@ -82,35 +80,40 @@ const ScreenContent = styled.div`
   background-color: #fafbfc;
 `;
 
-// 指令式
-const Imperative: React.FC = () => {
-  const handler = useRef<ActionSheetShowHandler>();
+// 事件处理
+const DemoActionSheetEvents: React.FC = () => {
   const actions: Action[] = [
+    { text: '复制', key: 'copy' },
+    { text: '修改', key: 'edit' },
     {
-      text: '复制',
-      key: 'copy',
-    },
-    {
-      text: '修改',
-      key: 'edit',
-      onClick: () => {
-        handler.current?.close();
+      text: '保存',
+      key: 'save',
+      onClick: async () => {
+        const result = await Dialog.confirm({ content: '确定要保存吗？' });
+        if (result) {
+          Toast.show('执行了保存操作');
+        }
       },
     },
   ];
 
+  const [visible, setVisible] = useState<boolean>(false);
   return (
-    <Button
-      onClick={() => {
-        handler.current = ActionSheet.show({
-          actions,
-          onClose: () => {
-            Toast.show('动作面板关闭');
-          },
-        });
-      }}
-    >
-      显示
-    </Button>
+    <>
+      <Button onClick={() => setVisible(true)}>事件处理</Button>
+      <ActionSheet
+        visible={visible}
+        actions={actions}
+        onClose={() => setVisible(false)}
+        onAction={(action) => {
+          if (action.key === 'edit' || action.key === 'copy') {
+            Toast.show(`点击了${action.text}`);
+          }
+        }}
+        afterClose={() => {
+          Toast.show('动作面板已关闭');
+        }}
+      />
+    </>
   );
 };
