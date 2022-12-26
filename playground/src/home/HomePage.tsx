@@ -3,6 +3,7 @@ import {
   type DeviceFrameColor,
   type DynamicIslandSize,
 } from '@junhoyeo/iphone';
+import { NoticeBar } from 'antd-mobile';
 import React, { useMemo, useState } from 'react';
 import styled from 'styled-components';
 
@@ -21,7 +22,7 @@ const FRAME_COLORS: { color: DeviceFrameColor; src: string }[] = [
 const HomePage = () => {
   const [frameColor, setFrameColor] = useState<DeviceFrameColor>('purple');
   const [dynamicIslandState, setDynamicIslandState] =
-    useState<DynamicIslandSize>('compact');
+    useState<DynamicIslandSize>('default');
 
   const props = useMemo(
     () =>
@@ -75,14 +76,38 @@ const HomePage = () => {
           Back to Default
         </DynamicIslandToolbarButton>
       </DynamicIslandToolbar>
+
+      <NoticeBarContainer>
+        <NoticeBar
+          content={
+            <>
+              Star & Follow me on{' '}
+              <a
+                href="https://github.com/junhoyeo/iphone"
+                target="_blank"
+                rel="noreferrer"
+              >
+                junhoyeo/iphone
+              </a>
+            </>
+          }
+          color="info"
+        />
+      </NoticeBarContainer>
+
       <Phone
+        appBarBrightness="light"
         frameColor={frameColor}
         transformScale={1}
         apps={[]}
         dock={DOCK}
         backgroundImage={BACKGROUND_IMAGE_URL}
         dynamicIslandProps={props}
-      />
+      >
+        <Screen>
+          <Iframe src="/demo" />
+        </Screen>
+      </Phone>
     </Container>
   );
 };
@@ -139,4 +164,31 @@ const DynamicIslandToolbarButton = styled.button`
   background-color: #26292b;
   color: #fff;
   cursor: pointer;
+`;
+
+const NoticeBarContainer = styled.div`
+  margin: 0 auto 32px;
+  width: 100%;
+  max-width: 400px;
+
+  & > div {
+    border-radius: 4px;
+    border: 1px solid #1677ff;
+
+    a {
+      text-decoration: underline;
+    }
+  }
+`;
+
+const Screen = styled.div`
+  width: 100%;
+  height: 100%;
+  background-color: white;
+`;
+
+const Iframe = styled.iframe`
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 `;
