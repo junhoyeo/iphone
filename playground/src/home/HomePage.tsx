@@ -123,6 +123,10 @@ export default HomePage;
 
 const Container = styled.div`
   margin: 64px 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const FrameColorList = styled.ul`
