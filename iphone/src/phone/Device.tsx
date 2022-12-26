@@ -7,7 +7,7 @@ import { DynamicIslandMusicPlayer } from '../../dynamic-island/src/MusicPlayer';
 import { DynamicIslandPhoneCall } from '../../dynamic-island/src/PhoneCall';
 import { shadow } from '../utils/shadow';
 import { Pagination } from './Pagination';
-import { Symbols } from './Symbols';
+import { AppBarBrightness, Symbols } from './Symbols';
 import { DEVICE_HEIGHT, DEVICE_WIDTH } from './constants';
 import classes from './device.module.scss';
 import { APP_ICON_SIZE } from './icons/AppIcon';
@@ -19,6 +19,7 @@ const SCREEN_CONTENT_WIDTH = Math.floor(APP_CELL_SIZE * 4);
 
 export type DeviceFrameColor = 'purple' | 'silver' | 'black' | 'gold';
 export type BasicDeviceProps = {
+  appBarBrightness: AppBarBrightness;
   frameColor: DeviceFrameColor;
   apps: GridItemProps[];
   dock: GridItemProps[];
@@ -31,6 +32,7 @@ type DeviceProps = BasicDeviceProps & {
 };
 
 export const Device: React.FC<DeviceProps> = ({
+  appBarBrightness = 'light',
   style,
   frameColor,
   apps,
@@ -69,7 +71,12 @@ export const Device: React.FC<DeviceProps> = ({
               className={classes.topContainer}
               style={{ width: SCREEN_CONTENT_WIDTH - APP_CELL_GAP }}
             >
-              <span className={`${classes.clock} font-sans`}>
+              <span
+                className={`${classes.clock} font-sans`}
+                style={{
+                  color: appBarBrightness === 'light' ? 'black' : 'undefined',
+                }}
+              >
                 {currentTime}
               </span>
 
@@ -86,7 +93,10 @@ export const Device: React.FC<DeviceProps> = ({
                 </DynamicIsland>
               </div>
 
-              <Symbols style={{ marginRight: -APP_CELL_GAP / 4 }} />
+              <Symbols
+                appBarBrightness={appBarBrightness}
+                style={{ marginRight: -APP_CELL_GAP / 4 }}
+              />
             </div>
 
             {!children ? (

@@ -3,9 +3,22 @@ import React from 'react';
 import { DivComponent } from '../types/html';
 import classes from './symbols.module.scss';
 
-export const Symbols: DivComponent = (props) => {
+export type AppBarBrightness = 'light' | 'dark';
+
+export type SymbolsProps = {
+  appBarBrightness: AppBarBrightness;
+};
+export const Symbols: DivComponent<SymbolsProps> = ({
+  appBarBrightness,
+  ...props
+}) => {
   return (
-    <div className={classes.wrapper} {...props}>
+    <div
+      className={`${classes.wrapper} ${
+        appBarBrightness === 'light' ? classes.light : classes.dark
+      }`}
+      {...props}
+    >
       <div className={classes.container}>
         <div className={classes.cellularList}>
           <div className={`${classes.cellularItem} ${classes.cellularOne}`} />
