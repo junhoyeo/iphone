@@ -3,6 +3,7 @@ import {
   AutoCenter,
   Button,
   Dialog,
+  Footer,
   NavBar,
   Steps,
   Toast,

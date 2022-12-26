@@ -3,6 +3,7 @@ import {
   type DeviceFrameColor,
   type DynamicIslandSize,
 } from '@junhoyeo/iphone';
+import { NoticeBar } from 'antd-mobile';
 import React, { useMemo, useState } from 'react';
 import styled from 'styled-components';
 
@@ -75,6 +76,25 @@ const HomePage = () => {
           Back to Default
         </DynamicIslandToolbarButton>
       </DynamicIslandToolbar>
+
+      <NoticeBarContainer>
+        <NoticeBar
+          content={
+            <>
+              Star & Follow me on{' '}
+              <a
+                href="https://github.com/junhoyeo/iphone"
+                target="_blank"
+                rel="noreferrer"
+              >
+                junhoyeo/iphone
+              </a>
+            </>
+          }
+          color="info"
+        />
+      </NoticeBarContainer>
+
       <Phone
         appBarBrightness="light"
         frameColor={frameColor}
@@ -144,6 +164,21 @@ const DynamicIslandToolbarButton = styled.button`
   background-color: #26292b;
   color: #fff;
   cursor: pointer;
+`;
+
+const NoticeBarContainer = styled.div`
+  margin: 0 auto 32px;
+  width: 100%;
+  max-width: 400px;
+
+  & > div {
+    border-radius: 4px;
+    border: 1px solid #1677ff;
+
+    a {
+      text-decoration: underline;
+    }
+  }
 `;
 
 const Screen = styled.div`
