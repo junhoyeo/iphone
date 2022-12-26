@@ -48,6 +48,7 @@
   position: absolute;
   width: 100%;
   z-index: 9;
+  pointer-events: none;
 }
 
 .device-iphone-14-pro .device-stripe::after {
