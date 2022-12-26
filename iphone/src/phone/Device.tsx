@@ -24,6 +24,7 @@ export type BasicDeviceProps = {
   dock: GridItemProps[];
   backgroundImage?: string;
   dynamicIslandProps: Omit<DynamicIslandProps, 'children'>;
+  children?: React.ReactNode;
 };
 type DeviceProps = BasicDeviceProps & {
   style?: React.CSSProperties;
@@ -36,6 +37,7 @@ export const Device: React.FC<DeviceProps> = ({
   dock,
   backgroundImage,
   dynamicIslandProps,
+  children,
 }) => {
   const deviceFrameColorClass =
     frameColor === 'purple' ? undefined : `device-${frameColor}`;
@@ -86,43 +88,50 @@ export const Device: React.FC<DeviceProps> = ({
 
               <Symbols style={{ marginRight: -APP_CELL_GAP / 4 }} />
             </div>
-            <div
-              className={classes.gridWrapper}
-              style={{ marginTop: DEVICE_HEIGHT * 0.0875 }}
-            >
-              <div
-                className={classes.gridContainer}
-                style={{
-                  width: SCREEN_CONTENT_WIDTH,
-                  gridTemplateColumns: `repeat(auto-fill, ${APP_CELL_SIZE}px)`,
-                  gridTemplateRows: `repeat(auto-fill, ${
-                    DEVICE_WIDTH * (0.016 + 0.15) +
-                    DEVICE_WIDTH * (0.12 * 0.695)
-                  }px)`,
-                }}
-              >
-                {apps.map((appItem, appIndex) => (
-                  <GridItem key={appIndex} {...appItem} />
-                ))}
-              </div>
-            </div>
-            <div className={classes.bottomWrapper}>
-              <Pagination />
-              <div
-                className={classes.bottomContainer}
-                style={{
-                  height: DEVICE_HEIGHT * 0.11,
-                  padding: `${0.045 * DEVICE_WIDTH}px ${
-                    0.047 * DEVICE_WIDTH
-                  }px`,
-                  backgroundImage: `url(${backgroundImage})`,
-                }}
-              >
-                {dock.slice(0, 4).map((appItem, appIndex) => (
-                  <GridItem dock key={appIndex} {...appItem} />
-                ))}
-              </div>
-            </div>
+
+            {!children ? (
+              <>
+                <div
+                  className={classes.gridWrapper}
+                  style={{ marginTop: DEVICE_HEIGHT * 0.0875 }}
+                >
+                  <div
+                    className={classes.gridContainer}
+                    style={{
+                      width: SCREEN_CONTENT_WIDTH,
+                      gridTemplateColumns: `repeat(auto-fill, ${APP_CELL_SIZE}px)`,
+                      gridTemplateRows: `repeat(auto-fill, ${
+                        DEVICE_WIDTH * (0.016 + 0.15) +
+                        DEVICE_WIDTH * (0.12 * 0.695)
+                      }px)`,
+                    }}
+                  >
+                    {apps.map((appItem, appIndex) => (
+                      <GridItem key={appIndex} {...appItem} />
+                    ))}
+                  </div>
+                </div>
+                <div className={classes.bottomWrapper}>
+                  <Pagination />
+                  <div
+                    className={classes.bottomContainer}
+                    style={{
+                      height: DEVICE_HEIGHT * 0.11,
+                      padding: `${0.045 * DEVICE_WIDTH}px ${
+                        0.047 * DEVICE_WIDTH
+                      }px`,
+                      backgroundImage: `url(${backgroundImage})`,
+                    }}
+                  >
+                    {dock.slice(0, 4).map((appItem, appIndex) => (
+                      <GridItem dock key={appIndex} {...appItem} />
+                    ))}
+                  </div>
+                </div>
+              </>
+            ) : (
+              children
+            )}
           </div>
         </div>
         <div className="device-stripe"></div>
