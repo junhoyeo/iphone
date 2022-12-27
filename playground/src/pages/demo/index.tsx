@@ -12,12 +12,14 @@ import { Action } from 'antd-mobile/es/components/action-sheet';
 import { Step } from 'antd-mobile/es/components/steps/step';
 import { NextPage } from 'next';
 import Link from 'next/link';
-import React, { useCallback, useState } from 'react';
+import { useRouter } from 'next/router';
+import React, { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import { DemoBlock } from '@/home/components/antd/DemoBlock';
 
 const DemoPage: NextPage = () => {
+  const router = useRouter();
   const onBack = useCallback(
     () =>
       Toast.show({
@@ -26,6 +28,18 @@ const DemoPage: NextPage = () => {
       }),
     [],
   );
+
+  const [loading, setLoading] = useState<boolean>(false);
+  useEffect(() => {
+    const handleRouteChange = (_url: string) => {
+      setLoading(true);
+    };
+
+    router.events.on('routeChangeStart', handleRouteChange);
+    return () => {
+      router.events.off('routeChangeStart', handleRouteChange);
+    };
+  }, [router.events]);
 
   return (
     <ScreenContent>
@@ -67,7 +81,13 @@ const DemoPage: NextPage = () => {
       </DemoBlock>
 
       <Link href="/demo/success">
-        <Button block color="primary" size="large">
+        <Button
+          block
+          color="primary"
+          size="large"
+          shape="rectangular"
+          loading={loading}
+        >
           Next
         </Button>
       </Link>
