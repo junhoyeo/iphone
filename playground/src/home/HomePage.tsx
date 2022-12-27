@@ -10,7 +10,13 @@ import {
 } from '@junhoyeo/iphone';
 import { Button, Popover } from 'antd-mobile';
 import { PlayOutline } from 'antd-mobile-icons';
-import React, { useCallback, useMemo, useRef, useState } from 'react';
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import styled from 'styled-components';
 
 import { useWindowSize } from '@/hooks/useWindowSize';
@@ -106,22 +112,36 @@ const HomePage = () => {
     }
   }, []);
 
+  const [hasApp, setHasApp] = useState<boolean>(false);
+  useEffect(() => {
+    const handler = () => setHasApp(false);
+    window.document.addEventListener('iphone_app_close', handler, false);
+    return () => {
+      window.document.removeEventListener('iphone_app_close', handler, false);
+    };
+  }, []);
+
   return (
     <Container>
       <MetaHead />
 
       <Phone
-        appBarBrightness="light"
+        appBarBrightness={!hasApp ? 'dark' : 'light'}
         frameColor={frameColor}
         transformScale={transformScale}
         apps={[]}
-        dock={DOCK}
+        dock={DOCK.map((v) => ({ ...v, onClick: () => setHasApp(true) }))}
         dynamicIslandProps={props}
+        backgroundImage={BACKGROUND_IMAGE_URL}
       >
-        <AppBar />
-        <Screen>
-          <Iframe src="/demo" allowTransparency />
-        </Screen>
+        {hasApp && (
+          <>
+            <AppBar />
+            <Screen>
+              <Iframe src="/demo" allowTransparency />
+            </Screen>
+          </>
+        )}
       </Phone>
 
       <Toolbar ref={containerRef}>
