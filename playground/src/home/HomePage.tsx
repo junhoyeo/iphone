@@ -4,11 +4,14 @@ import {
   RollbackOutlined,
 } from '@ant-design/icons';
 import {
+  DEVICE_BUTTON_WIDTH,
+  DEVICE_HEIGHT,
+  DEVICE_WIDTH,
   Phone,
   type DeviceFrameColor,
   type DynamicIslandSize,
 } from '@junhoyeo/iphone';
-import { Button, Popover } from 'antd-mobile';
+import { Button, Loading, Popover } from 'antd-mobile';
 import { PlayOutline } from 'antd-mobile-icons';
 import { AnimatePresence, motion } from 'framer-motion';
 import React, {
@@ -143,7 +146,7 @@ const HomePage = () => {
       <MetaHead />
 
       <AnimatePresence>
-        {isIconsLoaded && (
+        {isIconsLoaded ? (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -168,6 +171,18 @@ const HomePage = () => {
               )}
             </Phone>
           </motion.div>
+        ) : (
+          <div
+            style={{
+              width: transformScale * DEVICE_WIDTH + DEVICE_BUTTON_WIDTH * 2,
+              height: transformScale * DEVICE_HEIGHT,
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <Loading />
+          </div>
         )}
       </AnimatePresence>
 

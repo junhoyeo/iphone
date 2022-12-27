@@ -2,7 +2,11 @@ import 'tailwindcss/tailwind.css';
 import './styles/devices.css';
 
 export { Phone, type PhoneProps } from './phone';
-export { DEVICE_WIDTH, DEVICE_HEIGHT } from './phone/constants';
+export {
+  DEVICE_WIDTH,
+  DEVICE_HEIGHT,
+  DEVICE_BUTTON_WIDTH,
+} from './phone/constants';
 export { type DeviceFrameColor } from './phone/Device';
 
 export {
