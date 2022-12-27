@@ -1,10 +1,16 @@
 import {
+  FormatPainterOutlined,
+  PhoneOutlined,
+  RollbackOutlined,
+} from '@ant-design/icons';
+import {
   Phone,
   type DeviceFrameColor,
   type DynamicIslandSize,
 } from '@junhoyeo/iphone';
-import { NoticeBar } from 'antd-mobile';
-import React, { useMemo, useState } from 'react';
+import { Button, Popover } from 'antd-mobile';
+import { PlayOutline } from 'antd-mobile-icons';
+import React, { useCallback, useMemo, useRef, useState } from 'react';
 import styled from 'styled-components';
 
 import { useWindowSize } from '@/hooks/useWindowSize';
@@ -14,11 +20,33 @@ import { DOCK } from './constants/dock';
 
 const BACKGROUND_IMAGE_URL =
   'https://images.unsplash.com/photo-1651833826115-7530e72ce504?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=927&q=80';
-const FRAME_COLORS: { color: DeviceFrameColor; src: string }[] = [
-  { color: 'purple', src: '/images/finish/deeppurple.jpg' },
-  { color: 'gold', src: '/images/finish/gold.jpg' },
-  { color: 'silver', src: '/images/finish/silver.jpg' },
-  { color: 'black', src: '/images/finish/spaceblack.jpg' },
+const FRAME_COLORS: Record<DeviceFrameColor, { name: string; src: string }> = {
+  purple: {
+    name: 'Deep Purple',
+    src: '/images/finish/deeppurple.jpg',
+  },
+  gold: {
+    name: 'Gold',
+    src: '/images/finish/gold.jpg',
+  },
+  silver: {
+    name: 'Silver',
+    src: '/images/finish/silver.jpg',
+  },
+  black: {
+    name: 'Space Black',
+    src: '/images/finish/spaceblack.jpg',
+  },
+};
+
+type ActionKey = 'toggle-call' | 'reset';
+const ACTIONS: { key: ActionKey; text: string; icon: React.ReactNode }[] = [
+  { key: 'toggle-call', text: 'Toggle Call', icon: <PhoneOutlined /> },
+  {
+    key: 'reset',
+    text: 'Back to Default',
+    icon: <RollbackOutlined />,
+  },
 ];
 
 const HomePage = () => {
@@ -42,65 +70,45 @@ const HomePage = () => {
 
   const { width: windowWidth = 1980 } = useWindowSize();
   const transformScale = useMemo(() => {
-    return windowWidth <= 500 ? 0.68 : 1;
+    return windowWidth <= 500 ? 0.68 : 0.88;
   }, [windowWidth]);
 
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const frameColorActions = useMemo(() => {
+    return Object.entries(FRAME_COLORS).map(([key, { name, src }]) => ({
+      key,
+      text: name,
+      icon: (
+        <FrameColorRing
+          key={key}
+          style={{
+            borderColor: frameColor === key ? '#3694FF' : '#26292B',
+          }}
+        >
+          <FrameColorButton style={{ backgroundImage: `url(${src})` }} />
+        </FrameColorRing>
+      ),
+    }));
+  }, [frameColor]);
+
+  const onAction = useCallback((key?: ActionKey) => {
+    if (!key) {
+      return;
+    }
+    if (key === 'toggle-call') {
+      setDynamicIslandState((prev) =>
+        prev === 'default' || prev === 'compact' ? 'large' : 'default',
+      );
+    }
+    if (key === 'reset') {
+      setDynamicIslandState('default');
+    }
+  }, []);
+
   return (
-    <Container>
+    <Container ref={containerRef}>
       <MetaHead />
-
-      <FrameColorList>
-        {FRAME_COLORS.map(({ color, src }) => (
-          <FrameColorRing
-            key={color}
-            style={{
-              borderColor: frameColor === color ? '#3694FF' : '#26292B',
-            }}
-          >
-            <FrameColorButton
-              type="button"
-              onClick={() => setFrameColor(color)}
-              style={{ backgroundImage: `url(${src})` }}
-            />
-          </FrameColorRing>
-        ))}
-      </FrameColorList>
-      <DynamicIslandToolbar>
-        <DynamicIslandToolbarButton
-          type="button"
-          onClick={() =>
-            setDynamicIslandState((prev) =>
-              prev === 'default' || prev === 'compact' ? 'large' : 'compact',
-            )
-          }
-        >
-          Toggle Call
-        </DynamicIslandToolbarButton>
-        <DynamicIslandToolbarButton
-          type="button"
-          onClick={() => setDynamicIslandState('default')}
-        >
-          Back to Default
-        </DynamicIslandToolbarButton>
-      </DynamicIslandToolbar>
-
-      <NoticeBarContainer>
-        <NoticeBar
-          content={
-            <>
-              Star & Follow me on{' '}
-              <a
-                href="https://github.com/junhoyeo/iphone"
-                target="_blank"
-                rel="noreferrer"
-              >
-                junhoyeo/iphone
-              </a>
-            </>
-          }
-          color="info"
-        />
-      </NoticeBarContainer>
 
       <Phone
         appBarBrightness="light"
@@ -116,6 +124,33 @@ const HomePage = () => {
           <Iframe src="/demo" />
         </Screen>
       </Phone>
+
+      <Toolbar>
+        <Popover.Menu
+          mode="dark"
+          actions={frameColorActions}
+          placement="top-end"
+          onAction={(node) => setFrameColor(node.key)}
+          trigger="click"
+          getContainer={() => containerRef.current}
+        >
+          <ToolbarButton block shape="rounded">
+            <FormatPainterOutlined style={{ fontSize: 24, marginRight: -2 }} />
+          </ToolbarButton>
+        </Popover.Menu>
+        <Popover.Menu
+          mode="dark"
+          actions={ACTIONS}
+          placement="top-end"
+          onAction={(node) => onAction(node.key as ActionKey)}
+          trigger="click"
+          getContainer={() => containerRef.current}
+        >
+          <ToolbarButton color="primary" block shape="rounded">
+            <PlayOutline fontSize={24} />
+          </ToolbarButton>
+        </Popover.Menu>
+      </Toolbar>
     </Container>
   );
 };
@@ -123,22 +158,20 @@ const HomePage = () => {
 export default HomePage;
 
 const Container = styled.div`
-  margin: 64px 0;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+
+  position: relative;
+  overflow: hidden;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-`;
-
-const FrameColorList = styled.ul`
-  margin-bottom: 32px;
-  width: 100%;
-
-  display: flex;
   justify-content: center;
-  gap: 8px;
 `;
-const FrameColorRing = styled.li`
+
+const FrameColorRing = styled.div`
   padding: 4px;
   border: 2px solid;
   border-radius: 50%;
@@ -148,9 +181,9 @@ const FrameColorRing = styled.li`
   justify-content: center;
   align-items: center;
 `;
-const FrameColorButton = styled.button`
-  width: 48px;
-  height: 48px;
+const FrameColorButton = styled.div`
+  width: 20px;
+  height: 20px;
 
   border: 0;
   border-radius: 50%;
@@ -178,22 +211,6 @@ const DynamicIslandToolbarButton = styled.button`
   cursor: pointer;
 `;
 
-const NoticeBarContainer = styled.div`
-  padding: 0 16px;
-  margin: 0 auto 32px;
-  width: 100%;
-  max-width: 400px;
-
-  & > div {
-    border-radius: 4px;
-    border: 1px solid #1677ff;
-
-    a {
-      text-decoration: underline;
-    }
-  }
-`;
-
 const Screen = styled.div`
   width: 100%;
   height: 100%;
@@ -208,4 +225,33 @@ const Iframe = styled.iframe`
   width: 100%;
   height: 100%;
   overflow: hidden;
+`;
+
+const Toolbar = styled.div`
+  position: fixed;
+  right: 28px;
+  bottom: 32px;
+  z-index: 100;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+`;
+const ToolbarButton = styled(Button)`
+  box-sizing: border-box;
+  width: 52px;
+  height: 52px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  cursor: pointer;
+
+  transition: opacity ease 0.15s;
+  user-select: none;
+  touch-action: none;
+
+  border-radius: 50%;
+  border: 0;
 `;

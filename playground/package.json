@@ -10,6 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ant-design/icons": "^4.8.0",
     "@blazity/next-image-proxy": "^1.0.2",
     "antd-mobile": "^5.27.0",
     "antd-mobile-icons": "^0.3.0",
