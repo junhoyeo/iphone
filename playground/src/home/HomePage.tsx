@@ -42,7 +42,7 @@ const HomePage = () => {
 
   const { width: windowWidth = 1980 } = useWindowSize();
   const transformScale = useMemo(() => {
-    return windowWidth <= 500 ? 0.65 : 1;
+    return windowWidth <= 500 ? 0.68 : 1;
   }, [windowWidth]);
 
   return (
