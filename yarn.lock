@@ -790,7 +790,7 @@ __metadata:
     autoprefixer: ^10.4.13
     dedent: ^0.7.0
     figma-squircle: ^0.3.0
-    framer-motion: ^7.10.2
+    framer-motion: ^8.0.2
     next: ^13.0.7
     postcss: ^8.4.20
     react-dom: ^18.2.0
@@ -3518,9 +3518,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"framer-motion@npm:^7.10.2":
-  version: 7.10.2
-  resolution: "framer-motion@npm:7.10.2"
+"framer-motion@npm:^8.0.2":
+  version: 8.0.2
+  resolution: "framer-motion@npm:8.0.2"
   dependencies:
     "@emotion/is-prop-valid": ^0.8.2
     "@motionone/dom": ^10.15.3
@@ -3532,7 +3532,7 @@ __metadata:
   dependenciesMeta:
     "@emotion/is-prop-valid":
       optional: true
-  checksum: 75c7843cf83a1213237b4881e06811a01ae5bc9686ff3efdd5494ad23f28cfdf35ad0f6b907110b83f04ddef92412db8d296e28a7297dc83a9b68125311d9f35
+  checksum: 7c1df1b35d8b91f2458f2c9deb9f2af159d965e0d3e15f6535cd51bd9563ed22e28a407a8a3b6f21d76651bb109af98db1db9013967db03957583f9d949540c3
   languageName: node
   linkType: hard
 
