@@ -133,7 +133,7 @@ const HomePage = () => {
           trigger="click"
           getContainer={() => containerRef.current}
         >
-          <ToolbarButton block shape="rounded">
+          <ToolbarButton className="shadow-lg" block shape="rounded">
             <FormatPainterOutlined style={{ fontSize: 24, marginRight: -2 }} />
           </ToolbarButton>
         </Popover.Menu>
@@ -145,7 +145,12 @@ const HomePage = () => {
           trigger="click"
           getContainer={() => containerRef.current}
         >
-          <ToolbarButton color="primary" block shape="rounded">
+          <ToolbarButton
+            className="shadow-lg"
+            color="primary"
+            block
+            shape="rounded"
+          >
             <PlayOutline fontSize={24} />
           </ToolbarButton>
         </Popover.Menu>
