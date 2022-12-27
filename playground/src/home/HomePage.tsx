@@ -111,6 +111,7 @@ const HomePage = () => {
         backgroundImage={BACKGROUND_IMAGE_URL}
         dynamicIslandProps={props}
       >
+        <AppBar />
         <Screen>
           <Iframe src="/demo" />
         </Screen>
@@ -196,6 +197,10 @@ const NoticeBarContainer = styled.div`
 const Screen = styled.div`
   width: 100%;
   height: 100%;
+`;
+const AppBar = styled.div`
+  width: 100%;
+  height: 54px;
   background-color: white;
 `;
 

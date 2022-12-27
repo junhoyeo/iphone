@@ -1,8 +1,11 @@
-import { ResultPage } from 'antd-mobile';
+import { ResultPage, Steps } from 'antd-mobile';
 import { AlipayCircleFill } from 'antd-mobile-icons';
+import { Step } from 'antd-mobile/es/components/steps/step';
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
+
+import { DemoBlock } from '@/home/components/antd/DemoBlock';
 
 const DemoSuccessPage: NextPage = () => {
   const router = useRouter();
@@ -40,11 +43,29 @@ const DemoSuccessPage: NextPage = () => {
         onSecondaryButtonClick={() => router.back()}
         onPrimaryButtonClick={() => router.back()}
       >
+        <Card style={{ marginTop: 12 }}>
+          <DemoBlock title="纵向步骤条失败">
+            <Steps direction="vertical">
+              <Step
+                title="填写机构信息"
+                status="finish"
+                description="完成时间：2020-12-01 12:30"
+              />
+              <Step
+                title="签约机构"
+                status="finish"
+                description="完成时间：2020-12-01 12:30"
+              />
+              <Step
+                title="关联服务区"
+                status="finish"
+                description="完成时间：2020-12-01 12:30"
+              />
+              <Step title="审批失败" status="error" />
+            </Steps>
+          </DemoBlock>
+        </Card>
         <Card style={{ height: 64 }}> </Card>
-        <Card style={{ height: 128, marginTop: 12 }}> </Card>
-        <Card style={{ height: 128, marginTop: 12 }}> </Card>
-        <Card style={{ height: 128, marginTop: 12 }}> </Card>
-        <Card style={{ height: 128, marginTop: 12 }}> </Card>
         <Card style={{ height: 128, marginTop: 12 }}> </Card>
       </ResultPage>
     </ScreenContent>
@@ -54,12 +75,11 @@ const DemoSuccessPage: NextPage = () => {
 export default DemoSuccessPage;
 
 const ScreenContent = styled.div`
-  padding-top: 54px;
   width: 100%;
   height: 100%;
   min-height: 100vh;
 
   display: flex;
   flex-direction: column;
-  background-color: var(--adm-color-primary);
+  background-color: #fafbfc;
 `;

@@ -78,7 +78,6 @@ const DemoPage: NextPage = () => {
 export default DemoPage;
 
 const ScreenContent = styled.div`
-  padding-top: 54px;
   width: 100%;
   height: 100%;
   min-height: 100vh;
