@@ -3,7 +3,6 @@ import {
   AutoCenter,
   Button,
   Dialog,
-  Footer,
   NavBar,
   Steps,
   Toast,
@@ -43,6 +42,12 @@ const DemoPage: NextPage = () => {
 
   return (
     <ScreenContent>
+      <style jsx global>{`
+        html,
+        body {
+          background-color: #fafbfc !important;
+        }
+      `}</style>
       <div style={{ backgroundColor: 'white' }}>
         <NavBar onBack={onBack}>标题</NavBar>
       </div>

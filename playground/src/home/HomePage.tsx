@@ -120,7 +120,7 @@ const HomePage = () => {
       >
         <AppBar />
         <Screen>
-          <Iframe src="/demo" />
+          <Iframe src="/demo" allowTransparency />
         </Screen>
       </Phone>
 
