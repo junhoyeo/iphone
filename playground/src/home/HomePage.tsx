@@ -116,7 +116,6 @@ const HomePage = () => {
         transformScale={transformScale}
         apps={[]}
         dock={DOCK}
-        backgroundImage={BACKGROUND_IMAGE_URL}
         dynamicIslandProps={props}
       >
         <AppBar />
@@ -130,7 +129,7 @@ const HomePage = () => {
           mode="dark"
           actions={frameColorActions}
           placement="top-end"
-          onAction={(node) => setFrameColor(node.key)}
+          onAction={(node) => setFrameColor(node.key as DeviceFrameColor)}
           trigger="click"
           getContainer={() => containerRef.current}
         >
@@ -206,6 +205,7 @@ const Iframe = styled.iframe`
   width: 100%;
   height: 100%;
   overflow: hidden;
+  background-color: #fafbfc;
 `;
 
 const Toolbar = styled.div`
