@@ -41,12 +41,19 @@ const DOCK: GridItemProps[] = [];
 const BACKGROUND_IMAGE_URL: string = '';
 
 <Phone
+  appBarBrightness="dark"
   frameColor="purple"
   transformScale={1}
   apps={APPS}
   dock={DOCK}
   backgroundImage={BACKGROUND_IMAGE_URL}
-/>;
+  dynamicIslandProps={{ ... }}
+>
+  <AppBar />
+  <Screen>
+    <Iframe src="/demo" allowTransparency />
+  </Screen>
+</Phone>
 ```
 
 - **Special thanks to Sunghyun Cho([@anaclumos](https://github.com/anaclumos))! The implementation of Dynamic Island was made possible by his work.**
