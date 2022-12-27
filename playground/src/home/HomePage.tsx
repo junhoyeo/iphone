@@ -107,7 +107,7 @@ const HomePage = () => {
   }, []);
 
   return (
-    <Container ref={containerRef}>
+    <Container>
       <MetaHead />
 
       <Phone
@@ -125,7 +125,7 @@ const HomePage = () => {
         </Screen>
       </Phone>
 
-      <Toolbar>
+      <Toolbar ref={containerRef}>
         <Popover.Menu
           mode="dark"
           actions={frameColorActions}
@@ -158,12 +158,10 @@ const HomePage = () => {
 export default HomePage;
 
 const Container = styled.div`
+  margin: 32px 0 100px;
   width: 100%;
-  height: 100%;
-  min-height: 100vh;
 
   position: relative;
-  overflow: hidden;
 
   display: flex;
   flex-direction: column;
@@ -192,23 +190,6 @@ const FrameColorButton = styled.div`
   background-size: 104%;
   background-size: calc(100% + 2px);
   background-position: center;
-`;
-
-const DynamicIslandToolbar = styled.div`
-  margin-bottom: 32px;
-  width: 100%;
-
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-`;
-const DynamicIslandToolbarButton = styled.button`
-  padding: 8px 16px;
-  border: 0;
-  border-radius: 8px;
-  background-color: #26292b;
-  color: #fff;
-  cursor: pointer;
 `;
 
 const Screen = styled.div`
