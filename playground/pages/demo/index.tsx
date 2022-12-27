@@ -3,7 +3,6 @@ import {
   AutoCenter,
   Button,
   Dialog,
-  Footer,
   NavBar,
   Steps,
   Toast,
@@ -20,14 +19,10 @@ import { DemoBlock } from '@/home/components/antd/DemoBlock';
 
 const DemoPage: NextPage = () => {
   const router = useRouter();
-  const onBack = useCallback(
-    () =>
-      Toast.show({
-        content: '点击了返回区域',
-        duration: 1000,
-      }),
-    [],
-  );
+  const onBack = useCallback(() => {
+    const event = new CustomEvent('iphone_app_close');
+    window.parent.document.dispatchEvent(event);
+  }, []);
 
   const [loading, setLoading] = useState<boolean>(false);
   useEffect(() => {
@@ -43,6 +38,12 @@ const DemoPage: NextPage = () => {
 
   return (
     <ScreenContent>
+      <style jsx global>{`
+        html,
+        body {
+          background-color: #fafbfc !important;
+        }
+      `}</style>
       <div style={{ backgroundColor: 'white' }}>
         <NavBar onBack={onBack}>标题</NavBar>
       </div>

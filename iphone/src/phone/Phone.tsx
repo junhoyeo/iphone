@@ -36,7 +36,6 @@ const Wrapper: DivComponent<TransformScaleProps> = ({
       height: transformScale * DEVICE_HEIGHT,
       display: 'flex',
       justifyContent: 'center',
-      overflow: 'hidden',
     }}
   />
 );

@@ -4,6 +4,7 @@ import React from 'react';
 import { GlobalStyle } from '@/components/GlobalStyle';
 
 import '@junhoyeo/iphone/dist/style.css';
+import '@/styles/tailwind.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

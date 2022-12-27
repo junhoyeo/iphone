@@ -10,10 +10,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ant-design/icons": "^4.8.0",
     "@blazity/next-image-proxy": "^1.0.2",
     "antd-mobile": "^5.27.0",
     "antd-mobile-icons": "^0.3.0",
     "next": "^13.0.6",
+    "nextra": "^2.0.1",
+    "nextra-theme-docs": "^2.0.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-is": "^18.2.0",
@@ -27,10 +30,12 @@
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.9",
     "@types/styled-components": "^5.1.26",
+    "autoprefixer": "^10.4.13",
     "eslint": "^8.29.0",
     "eslint-config-next": "^13.0.6",
     "eslint-config-prettier": "^8.5.0",
     "next-composed-plugins": "^1.0.1",
+    "postcss": "^8.4.20",
     "typescript": "^4.9.3"
   }
 }

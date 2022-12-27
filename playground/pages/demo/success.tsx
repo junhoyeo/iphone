@@ -25,6 +25,12 @@ const DemoSuccessPage: NextPage = () => {
 
   return (
     <ScreenContent>
+      <style jsx global>{`
+        html,
+        body {
+          background-color: #fafbfc !important;
+        }
+      `}</style>
       <ResultPage
         status="waiting"
         title={<div style={{ fontSize: 15 }}>支付成功</div>}

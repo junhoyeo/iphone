@@ -1,0 +1,10 @@
+{
+  "index": {
+    "title": "Home",
+    "theme": {
+      "breadcrumb": false
+    }
+  },
+  "about": "About",
+  "pricing": "Pricing"
+}
