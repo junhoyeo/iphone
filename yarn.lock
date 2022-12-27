@@ -762,6 +762,7 @@ __metadata:
     "@types/styled-components": ^5.1.26
     antd-mobile: ^5.27.0
     antd-mobile-icons: ^0.3.0
+    autoprefixer: ^10.4.13
     eslint: ^8.29.0
     eslint-config-next: ^13.0.6
     eslint-config-prettier: ^8.5.0
@@ -769,6 +770,7 @@ __metadata:
     next-composed-plugins: ^1.0.1
     nextra: ^2.0.1
     nextra-theme-docs: ^2.0.1
+    postcss: ^8.4.20
     react: 18.2.0
     react-dom: 18.2.0
     react-is: ^18.2.0
