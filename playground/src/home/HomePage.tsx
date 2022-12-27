@@ -10,6 +10,7 @@ import {
 } from '@junhoyeo/iphone';
 import { Button, Popover } from 'antd-mobile';
 import { PlayOutline } from 'antd-mobile-icons';
+import { AnimatePresence, motion } from 'framer-motion';
 import React, {
   useCallback,
   useEffect,
@@ -141,26 +142,34 @@ const HomePage = () => {
     <Container>
       <MetaHead />
 
-      {isIconsLoaded && (
-        <Phone
-          appBarBrightness={!hasApp ? 'dark' : 'light'}
-          frameColor={frameColor}
-          transformScale={transformScale}
-          apps={[]}
-          dock={DOCK.map((v) => ({ ...v, onClick: () => setHasApp(true) }))}
-          dynamicIslandProps={props}
-          backgroundImage={BACKGROUND_IMAGE_URL}
-        >
-          {hasApp && (
-            <>
-              <AppBar />
-              <Screen>
-                <Iframe src="/demo" allowTransparency />
-              </Screen>
-            </>
-          )}
-        </Phone>
-      )}
+      <AnimatePresence>
+        {isIconsLoaded && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <Phone
+              appBarBrightness={!hasApp ? 'dark' : 'light'}
+              frameColor={frameColor}
+              transformScale={transformScale}
+              apps={[]}
+              dock={DOCK.map((v) => ({ ...v, onClick: () => setHasApp(true) }))}
+              dynamicIslandProps={props}
+              backgroundImage={BACKGROUND_IMAGE_URL}
+            >
+              {hasApp && (
+                <>
+                  <AppBar />
+                  <Screen>
+                    <Iframe src="/demo" allowTransparency />
+                  </Screen>
+                </>
+              )}
+            </Phone>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <Toolbar ref={containerRef}>
         <Popover.Menu
