@@ -182,7 +182,8 @@ const HomePage = () => {
 export default HomePage;
 
 const Container = styled.div`
-  margin: 32px 0 100px;
+  margin-top: 32px;
+  padding-bottom: 100px;
   width: 100%;
 
   position: relative;
@@ -234,9 +235,9 @@ const Iframe = styled.iframe`
 `;
 
 const Toolbar = styled.div`
-  position: fixed;
-  right: 28px;
-  bottom: 32px;
+  position: absolute;
+  right: 10px;
+  bottom: 0;
   z-index: 100;
 
   display: flex;
