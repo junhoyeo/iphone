@@ -26,7 +26,7 @@
   "dependencies": {
     "dedent": "^0.7.0",
     "figma-squircle": "^0.3.0",
-    "framer-motion": "^7.10.2",
+    "framer-motion": "^8.0.2",
     "next": "^13.0.7",
     "sass": "^1.57.0"
   },

@@ -2,12 +2,19 @@
 import { AppIcon, DEVICE_WIDTH, type GridItemProps } from '@junhoyeo/iphone';
 import React from 'react';
 
+export const DOCK_IMAGE_URLS = {
+  phone: '/assets/phone/icons/bottom/phone.png',
+  mail: '/assets/phone/icons/bottom/mail.png',
+  safari: '/assets/phone/icons/bottom/safari.png',
+  music: '/assets/phone/icons/bottom/music.png',
+};
+
 const Safari: React.FC = () => {
   return (
     <AppIcon>
       <img
         alt=""
-        src="/assets/phone/icons/bottom/safari.png"
+        src={DOCK_IMAGE_URLS.safari}
         style={{
           width: DEVICE_WIDTH * 0.156 * 0.88,
           height: DEVICE_WIDTH * 0.156 * 0.88,
@@ -19,13 +26,13 @@ const Safari: React.FC = () => {
 
 export const DOCK: GridItemProps[] = [
   {
-    icon: '/assets/phone/icons/bottom/phone.png',
+    icon: DOCK_IMAGE_URLS.phone,
     style: {
       background: 'linear-gradient(to bottom, #89f384, #56ba43)',
     },
   },
   {
-    icon: '/assets/phone/icons/bottom/mail.png',
+    icon: DOCK_IMAGE_URLS.mail,
     style: {
       background: 'linear-gradient(to bottom, #1d52ef, #14e6fd)',
     },
@@ -34,7 +41,7 @@ export const DOCK: GridItemProps[] = [
     component: <Safari />,
   },
   {
-    icon: '/assets/phone/icons/bottom/music.png',
+    icon: DOCK_IMAGE_URLS.music,
     style: {
       background: 'linear-gradient(to bottom, #fc5d74, #fa233c)',
     },

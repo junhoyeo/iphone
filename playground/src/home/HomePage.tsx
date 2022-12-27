@@ -10,6 +10,7 @@ import {
 } from '@junhoyeo/iphone';
 import { Button, Popover } from 'antd-mobile';
 import { PlayOutline } from 'antd-mobile-icons';
+import { AnimatePresence, motion } from 'framer-motion';
 import React, {
   useCallback,
   useEffect,
@@ -22,7 +23,7 @@ import styled from 'styled-components';
 import { useWindowSize } from '@/hooks/useWindowSize';
 
 import { MetaHead } from './MetaHead';
-import { DOCK } from './constants/dock';
+import { DOCK, DOCK_IMAGE_URLS } from './constants/dock';
 
 const BACKGROUND_IMAGE_URL =
   'https://images.unsplash.com/photo-1651833826115-7530e72ce504?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=927&q=80';
@@ -121,28 +122,54 @@ const HomePage = () => {
     };
   }, []);
 
+  const [isIconsLoaded, setIconsLoaded] = useState<boolean>(false);
+  useEffect(() => {
+    const prefetchIcons = async () => {
+      await Promise.all(
+        Object.values(DOCK_IMAGE_URLS).map((url) => {
+          const img = new Image();
+          img.src = url;
+          return new Promise((resolve) => {
+            img.onload = resolve;
+          });
+        }),
+      );
+    };
+    prefetchIcons().then(() => setIconsLoaded(true));
+  }, []);
+
   return (
     <Container>
       <MetaHead />
 
-      <Phone
-        appBarBrightness={!hasApp ? 'dark' : 'light'}
-        frameColor={frameColor}
-        transformScale={transformScale}
-        apps={[]}
-        dock={DOCK.map((v) => ({ ...v, onClick: () => setHasApp(true) }))}
-        dynamicIslandProps={props}
-        backgroundImage={BACKGROUND_IMAGE_URL}
-      >
-        {hasApp && (
-          <>
-            <AppBar />
-            <Screen>
-              <Iframe src="/demo" allowTransparency />
-            </Screen>
-          </>
+      <AnimatePresence>
+        {isIconsLoaded && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <Phone
+              appBarBrightness={!hasApp ? 'dark' : 'light'}
+              frameColor={frameColor}
+              transformScale={transformScale}
+              apps={[]}
+              dock={DOCK.map((v) => ({ ...v, onClick: () => setHasApp(true) }))}
+              dynamicIslandProps={props}
+              backgroundImage={BACKGROUND_IMAGE_URL}
+            >
+              {hasApp && (
+                <>
+                  <AppBar />
+                  <Screen>
+                    <Iframe src="/demo" allowTransparency />
+                  </Screen>
+                </>
+              )}
+            </Phone>
+          </motion.div>
         )}
-      </Phone>
+      </AnimatePresence>
 
       <Toolbar ref={containerRef}>
         <Popover.Menu
