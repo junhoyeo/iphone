@@ -121,18 +121,21 @@ export const Device: React.FC<DeviceProps> = ({
                     ))}
                   </div>
                 </div>
-                <div className={classes.bottomWrapper}>
+                <div className={classes.dockWrapper}>
                   <Pagination />
                   <div
-                    className={classes.bottomContainer}
+                    className={classes.dockContainer}
                     style={{
                       height: DEVICE_HEIGHT * 0.11,
                       padding: `${0.045 * DEVICE_WIDTH}px ${
                         0.047 * DEVICE_WIDTH
                       }px`,
-                      backgroundImage: `url(${backgroundImage})`,
                     }}
                   >
+                    <div
+                      className={classes.dockBlur}
+                      style={{ backgroundImage: `url(${backgroundImage})` }}
+                    />
                     {dock.slice(0, 4).map((appItem, appIndex) => (
                       <GridItem dock key={appIndex} {...appItem} />
                     ))}
