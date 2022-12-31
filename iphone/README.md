@@ -72,4 +72,5 @@ const BACKGROUND_IMAGE_URL: string = '';
 
 ## Powers
 
-- [junhoyeo/junho.io](https://github.com/junhoyeo/junho.io)
+- ~~[junhoyeo/junho.io](https://github.com/junhoyeo/junho.io)~~
+- [junhoyeo/paracosm](https://github.com/junhoyeo/paracosm)
