@@ -130,9 +130,12 @@ export const Device: React.FC<DeviceProps> = ({
                       padding: `${0.045 * DEVICE_WIDTH}px ${
                         0.047 * DEVICE_WIDTH
                       }px`,
-                      backgroundImage: `url(${backgroundImage})`,
                     }}
                   >
+                    <div
+                      className={classes.bottomBlur}
+                      style={{ backgroundImage: `url(${backgroundImage})` }}
+                    />
                     {dock.slice(0, 4).map((appItem, appIndex) => (
                       <GridItem dock key={appIndex} {...appItem} />
                     ))}
