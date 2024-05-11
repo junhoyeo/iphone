@@ -63,7 +63,7 @@ const BACKGROUND_IMAGE_URL: string = '';
 
 <p align="center">
   <a href="https://vitejs.dev">
-    <img alt="Vite" src="https://camo.githubusercontent.com/61e102d7c605ff91efedb9d7e47c1c4a07cef59d3e1da202fd74f4772122ca4e/68747470733a2f2f766974656a732e6465762f6c6f676f2e737667" height="82px" />
+    <img alt="Vite" src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Vitejs-logo.svg" height="82px" />
   </a>
 </p>
 
