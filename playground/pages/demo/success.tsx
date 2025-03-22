@@ -12,13 +12,13 @@ const DemoSuccessPage: NextPage = () => {
 
   const details = [
     {
-      label: '肯德基（嘉里中心店）',
+      label: 'KFC (Kerry Center Store)',
       value: '¥ 36.50',
       bold: true,
     },
     {
-      label: '付款方式',
-      value: '账户余额',
+      label: 'Payment Method',
+      value: 'Account Balance',
     },
   ];
   const Card = ResultPage.Card;
@@ -33,7 +33,7 @@ const DemoSuccessPage: NextPage = () => {
       `}</style>
       <ResultPage
         status="waiting"
-        title={<div style={{ fontSize: 15 }}>支付成功</div>}
+        title={<div style={{ fontSize: 15 }}>Payment Successful</div>}
         description={
           <>
             <span style={{ fontSize: 32, color: '#ffffff', marginRight: 4 }}>
@@ -44,30 +44,30 @@ const DemoSuccessPage: NextPage = () => {
         }
         icon={<AlipayCircleFill />}
         details={details}
-        secondaryButtonText="辅助操作"
-        primaryButtonText="主要操作"
+        secondaryButtonText="Secondary Action"
+        primaryButtonText="Primary Action"
         onSecondaryButtonClick={() => router.back()}
         onPrimaryButtonClick={() => router.back()}
       >
         <Card style={{ marginTop: 12 }}>
-          <DemoBlock title="纵向步骤条失败">
+          <DemoBlock title="Vertical Step Bar Failure">
             <Steps direction="vertical">
               <Step
-                title="填写机构信息"
+                title="Fill in Organization Information"
                 status="finish"
-                description="完成时间：2020-12-01 12:30"
+                description="Completion Time: 2020-12-01 12:30"
               />
               <Step
-                title="签约机构"
+                title="Sign the Organization"
                 status="finish"
-                description="完成时间：2020-12-01 12:30"
+                description="Completion Time: 2020-12-01 12:30"
               />
               <Step
-                title="关联服务区"
+                title="Link Service Area"
                 status="finish"
-                description="完成时间：2020-12-01 12:30"
+                description="Completion Time: 2020-12-01 12:30"
               />
-              <Step title="审批失败" status="error" />
+              <Step title="Approval Failed" status="error" />
             </Steps>
           </DemoBlock>
         </Card>

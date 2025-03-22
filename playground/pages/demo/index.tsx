@@ -45,39 +45,39 @@ const DemoPage: NextPage = () => {
         }
       `}</style>
       <div style={{ backgroundColor: 'white' }}>
-        <NavBar onBack={onBack}>标题</NavBar>
+        <NavBar onBack={onBack}>Title</NavBar>
       </div>
 
-      <DemoBlock title="内容不够整行宽度时自动居中">
+      <DemoBlock title="Content is automatically centered when it does not fill the entire width">
         <AutoCenter>laborum ullamco sint</AutoCenter>
       </DemoBlock>
 
-      <DemoBlock title="内容达到满宽后保持正常的左对齐">
+      <DemoBlock title="Content maintains normal left alignment after reaching full width">
         <AutoCenter>laborum ullamco sint</AutoCenter>
       </DemoBlock>
 
-      <DemoBlock title="纵向步骤条失败">
+      <DemoBlock title="Vertical step bar failure">
         <Steps direction="vertical">
           <Step
-            title="填写机构信息"
+            title="Fill in organization information"
             status="finish"
-            description="完成时间：2020-12-01 12:30"
+            description="Completion time: 2020-12-01 12:30"
           />
           <Step
-            title="签约机构"
+            title="Sign the organization"
             status="finish"
-            description="完成时间：2020-12-01 12:30"
+            description="Completion time: 2020-12-01 12:30"
           />
           <Step
-            title="关联服务区"
+            title="Link service area"
             status="finish"
-            description="完成时间：2020-12-01 12:30"
+            description="Completion time: 2020-12-01 12:30"
           />
-          <Step title="审批失败" status="error" />
+          <Step title="Approval failed" status="error" />
         </Steps>
       </DemoBlock>
 
-      <DemoBlock title="指令式">
+      <DemoBlock title="Command mode">
         <DemoActionSheetEvents />
       </DemoBlock>
 
@@ -108,18 +108,18 @@ const ScreenContent = styled.div`
   background-color: #fafbfc;
 `;
 
-// 事件处理
+// Event handling
 const DemoActionSheetEvents: React.FC = () => {
   const actions: Action[] = [
-    { text: '复制', key: 'copy' },
-    { text: '修改', key: 'edit' },
+    { text: 'Copy', key: 'copy' },
+    { text: 'Edit', key: 'edit' },
     {
-      text: '保存',
+      text: 'Save',
       key: 'save',
       onClick: async () => {
-        const result = await Dialog.confirm({ content: '确定要保存吗？' });
+        const result = await Dialog.confirm({ content: 'Are you sure you want to save?' });
         if (result) {
-          Toast.show('执行了保存操作');
+          Toast.show('Save operation executed');
         }
       },
     },
@@ -128,18 +128,18 @@ const DemoActionSheetEvents: React.FC = () => {
   const [visible, setVisible] = useState<boolean>(false);
   return (
     <>
-      <Button onClick={() => setVisible(true)}>事件处理</Button>
+      <Button onClick={() => setVisible(true)}>Event handling</Button>
       <ActionSheet
         visible={visible}
         actions={actions}
         onClose={() => setVisible(false)}
         onAction={(action) => {
           if (action.key === 'edit' || action.key === 'copy') {
-            Toast.show(`点击了${action.text}`);
+            Toast.show(`Clicked on ${action.text}`);
           }
         }}
         afterClose={() => {
-          Toast.show('动作面板已关闭');
+          Toast.show('Action panel has been closed');
         }}
       />
     </>
